@@ -6,26 +6,22 @@
       <v-container row>
         <v-row align="center">
           <v-col class="text-center" cols="12" sm="8">
-            <h2>{{ activeName }}</h2>
-            <iframe
-              :src="src"
-              frameborder="0"
-              allow="autoplay; fullscreen"
-              allowfullscreen
-            />
+            {{ activeName }}
+                <iframe
+                  :src="src"
+                  frameborder="0"
+                  allow="autoplay; fullscreen"
+                  allowfullscreen
+                />
           </v-col>
-          <v-col sm="4" xs="12" class="text-center">
-            <v-card
-              v-for="v in videos"
-              :key="v.name"
-              xs="12"
-              sm="4"
-              height="2em"
-              class="lessons"
-              @click="play(v)"
-            >
-              <h5>{{ v.name }}</h5>
-            </v-card>
+          <v-col sm="4" xs="12">
+            <v-layout column>
+              <v-flex v-for="v in videos" :key="v.name">
+                <v-btn width="20em" class="lessons" @click="play(v)">
+                  <h5>{{ v.name }}</h5>
+                </v-btn>
+              </v-flex>
+            </v-layout>
           </v-col>
         </v-row>
       </v-container>

@@ -117,8 +117,8 @@ export default {
     }
   },
   mounted () {
-    if (localStorage.correct_password === 'true') {
-      this.welcomeCard = false
+    if (localStorage.correct_password === 'true' ) {
+      this.welcomeCard = true
     }
   },
   methods: {

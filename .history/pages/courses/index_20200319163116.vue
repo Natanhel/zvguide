@@ -76,7 +76,7 @@ export default {
   data () {
     return {
       pwd: '',
-      welcomeCard: true,
+      welcomeCard: false,
       items: [
         {
           id: 1,
@@ -117,8 +117,13 @@ export default {
     }
   },
   mounted () {
-    if (localStorage.correct_password === 'true') {
+    const firstTime = localStorage.welcome_msg
+    if (firstTime === true) {
       this.welcomeCard = false
+      // localStorage.welcome_msg = false
+    } else {
+      this.welcomeCard = true
+      localStorage.welcome_msg = true
     }
   },
   methods: {
@@ -133,7 +138,6 @@ export default {
     staggerOn () {
       if (this.pwd !== '2020zahal') { return }
       this.welcomeCard = !this.welcomeCard
-      localStorage.correct_password = true
       setTimeout(() => {
       }, 1000)
       gsap.from('.lesson-card', {

@@ -2,32 +2,30 @@
 /* eslint-disable no-tabs */
 <template>
   <div>
-    <v-flex>
+    <v-flex class="video">
       <v-container row>
-        <v-row align="center">
-          <v-col class="text-center" cols="12" sm="8">
-            <h2>{{ activeName }}</h2>
+        <v-card>
+          <v-card-title>{{ activeName }}</v-card-title>
+
+          <v-flex xs12 xl8>
             <iframe
               :src="src"
+              width="1000wh"
+              height="100%"
               frameborder="0"
               allow="autoplay; fullscreen"
               allowfullscreen
             />
-          </v-col>
-          <v-col sm="4" xs="12" class="text-center">
-            <v-card
-              v-for="v in videos"
-              :key="v.name"
-              xs="12"
-              sm="4"
-              height="2em"
-              class="lessons"
-              @click="play(v)"
-            >
-              <h5>{{ v.name }}</h5>
-            </v-card>
-          </v-col>
-        </v-row>
+          </v-flex>
+        </v-card>
+
+        <v-layout column>
+          <v-flex v-for="v in videos" :key="v.name" xs12 xl4>
+            <v-btn width="20em" @click="play(v)"  class="lessons">
+              <h5 >{{ v.name }}</h5>
+            </v-btn>
+          </v-flex>
+        </v-layout>
       </v-container>
     </v-flex>
   </div>
@@ -104,6 +102,7 @@ export default {
   align-items: center;
   justify-content: center;
   align-content: center;
+  padding: 0.5em;
 }
 
 .lessons{
@@ -113,19 +112,5 @@ export default {
     justify-content: center;
     align-content: center;
 }
-body {
-    margin: 0;
-    padding: 0;
-}
 
-iframe {
-    display: block;
-    width: 100vw;
-    max-width: 100%;
-    height: 50vh;
-    margin: 0;
-    padding: 0;
-    border: 0 none;
-    box-sizing: border-box;
-}
 </style>

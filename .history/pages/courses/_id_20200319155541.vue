@@ -20,7 +20,6 @@
               :key="v.name"
               xs="12"
               sm="4"
-              height="2em"
               class="lessons"
               @click="play(v)"
             >

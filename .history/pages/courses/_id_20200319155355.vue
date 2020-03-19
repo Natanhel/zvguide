@@ -15,16 +15,10 @@
             />
           </v-col>
           <v-col sm="4" xs="12" class="text-center">
-            <v-card
-              v-for="v in videos"
-              :key="v.name"
-              xs="12"
-              sm="4"
-              height="2em"
-              class="lessons"
-              @click="play(v)"
-            >
-              <h5>{{ v.name }}</h5>
+            <v-card v-for="v in videos" :key="v.name">
+              <v-btn class="lessons" @click="play(v)">
+                <h5>{{ v.name }}</h5>
+              </v-btn>
             </v-card>
           </v-col>
         </v-row>

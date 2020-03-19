@@ -22,32 +22,39 @@
             <p>כמו כן, לומדים הכי טוב אם מתרגלים ולכן, מומלץ בחום להוריד את הסביבה אליכם למחשב ולכתוב קוד</p>
             <p>בהצלחה!</p>
             <p>אם אתם מוצאים בעיה כלשהי בלינקים יש ליצור קשר עם נתנאל</p>
-            <v-card width="30vw" flat>
-              <v-text-field
-                v-model="pwd"
-                type="password"
-                color="white"
-                outlined
-                dense
-                placeholder="הזן סיסמא כאן"
-                @keypress="enterWasPressed"
-              />
-              <v-btn
-                @click="staggerOn"
-              >
-                כנס
-              </v-btn>
-            </v-card>
+            <v-btn @click="staggerOn">
+              סגור
+            </v-btn>
           </v-card>
         </v-flex>
       </div>
     </transition>
     <transition name="courses" mode="out-in">
       <div v-show="!welcomeCard">
+        <!-- <v-treeview
+          rounded
+          hoverable
+          item-disabled="locked"
+          :items="items"
+        >
+          <template v-slot:prepend="{ item }">
+            <h2 v-if="item.header">
+              {{ item.Name }}
+            </h2>
+            <v-btn
+              v-if="!item.header"
+              width="25em"
+              text
+              :to="getName(item.Name)"
+            >
+              {{ item.Name }}
+            </v-btn>
+          </template>
+        </v-treeview> -->
         <div v-for="(card,index) in items" :key="index">
           <h2>{{ card.Name }}</h2>
           <v-divider />
-          <v-container row fluid style="justify-content: space-evenly;">
+          <v-container row fluid>
             <v-card
               v-for="child in card.children"
               :key="child.id"
@@ -75,8 +82,7 @@ export default {
   },
   data () {
     return {
-      pwd: '',
-      welcomeCard: true,
+      welcomeCard: false,
       items: [
         {
           id: 1,
@@ -117,23 +123,21 @@ export default {
     }
   },
   mounted () {
-    if (localStorage.correct_password === 'true') {
+    const firstTime = localStorage.welcome_msg
+    if (firstTime === true) {
       this.welcomeCard = false
+      // localStorage.welcome_msg = false
+    } else {
+      this.welcomeCard = true
+      localStorage.welcome_msg = true
     }
   },
   methods: {
-    enterWasPressed (e) {
-      if (e.keyCode === 13) {
-        this.staggerOn()
-      }
-    },
     getName (name) {
       return '/courses/' + name.split(' ').join('_')
     },
     staggerOn () {
-      if (this.pwd !== '2020zahal') { return }
       this.welcomeCard = !this.welcomeCard
-      localStorage.correct_password = true
       setTimeout(() => {
       }, 1000)
       gsap.from('.lesson-card', {
