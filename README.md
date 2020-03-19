@@ -1,4 +1,4 @@
-# nuxt
+# ZVGuide
 
 > My riveting Nuxt.js project
 
