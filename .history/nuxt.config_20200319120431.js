@@ -1,8 +1,6 @@
 import colors from 'vuetify/es5/util/colors'
 
 export default {
-  srcDir: '.',
-  buildDir: 'functions/.nuxt',
   mode: 'universal',
   /*
   ** Headers of the page
@@ -82,7 +80,6 @@ export default {
     /*
     ** You can extend webpack config here
     */
-    extractCSS: true,
     extend (config, ctx) {
     }
   }

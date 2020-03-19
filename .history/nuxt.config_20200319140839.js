@@ -46,7 +46,11 @@ export default {
   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/firebase',
+    services: {
+      hosting: true // Just as example. Can be any other service.
+    }
   ],
   /*
   ** Axios module configuration

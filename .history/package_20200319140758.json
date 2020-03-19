@@ -19,8 +19,7 @@
     "copy:nuxt": "xcopy \".\\.nuxt\\dist\\*\" \"public\\_nuxt\\\" /E /Y",
     "copy:static": "xcopy \".\\static\\*\" \"public\\\" /E /Y",
     "start:firebase": "firebase serve --only functions,hosting",
-    "deploy": "firebase deploy --only functions,hosting",
-    "heroku-postbuild": "npm run build"
+    "deploy": "firebase deploy --only functions,hosting"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",

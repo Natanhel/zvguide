@@ -46,7 +46,23 @@ export default {
   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/firebase',
+    {
+      config: {
+        apiKey: 'AIzaSyBKvSDcIMdg1eLfAPBfaPEBr3WVTeDZLJQ',
+        authDomain: 'zvguide.firebaseapp.com',
+        databaseURL: 'https://zvguide.firebaseio.com',
+        projectId: 'zvguide',
+        storageBucket: 'zvguide.appspot.com',
+        messagingSenderId: '185817579889',
+        appId: '1:185817579889:web:c0c1fba4b20aef6d63f6d0',
+        measurementId: 'G-NRWKE8NHB7'
+      },
+      services: {
+        hosting: true // Just as example. Can be any other service.
+      }
+    }
   ],
   /*
   ** Axios module configuration

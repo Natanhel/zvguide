@@ -11,29 +11,31 @@
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "build:firebase": "yarn clean && yarn build && yarn copy && cd \"functions\" && yarn",
+
     "clean": "yarn clean:public && yarn clean:functions && yarn clean:static",
     "clean:functions": "rimraf \"functions/node_modules\" && rimraf \"functions/.nuxt\"",
     "clean:public": "rimraf \"public/**/*.*!(md)\" && rimraf \"public/_nuxt\"",
-    "clean:static": "rimraf \"./static/sw.js\"",
+    "clean:static": "rimraf \"src/static/sw.js\"",
+
     "copy": "yarn copy:nuxt && yarn copy:static",
-    "copy:nuxt": "xcopy \".\\.nuxt\\dist\\*\" \"public\\_nuxt\\\" /E /Y",
-    "copy:static": "xcopy \".\\static\\*\" \"public\\\" /E /Y",
+    "copy:nuxt": "xcopy \"functions\\.nuxt\\dist\\*\" \"public\\_nuxt\\\" /E /Y",
+    "copy:static": "xcopy \"src\\static\\*\" \"public\\\" /E /Y",
+
     "start:firebase": "firebase serve --only functions,hosting",
-    "deploy": "firebase deploy --only functions,hosting",
-    "heroku-postbuild": "npm run build"
+
+    "deploy": "firebase deploy --only functions,hosting"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
-    "@nuxtjs/firebase": "^5.0.3",
     "gsap": "^3.2.4",
     "nuxt": "^2.0.0"
   },
   "devDependencies": {
+    "@nuxtjs/vuetify": "^1.0.0",
     "@nuxtjs/eslint-config": "^2.0.0",
     "@nuxtjs/eslint-module": "^1.0.0",
-    "@nuxtjs/vuetify": "^1.0.0",
     "babel-eslint": "^10.0.1",
-    "eslint": "^6.8.0",
+    "eslint": "^6.1.0",
     "eslint-plugin-nuxt": ">=0.4.2"
   }
 }

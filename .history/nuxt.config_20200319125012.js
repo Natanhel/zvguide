@@ -1,7 +1,7 @@
 import colors from 'vuetify/es5/util/colors'
 
 export default {
-  srcDir: '.',
+  srcDir: 'src',
   buildDir: 'functions/.nuxt',
   mode: 'universal',
   /*
@@ -46,7 +46,8 @@ export default {
   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    
   ],
   /*
   ** Axios module configuration
