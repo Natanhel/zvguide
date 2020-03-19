@@ -3,9 +3,7 @@
 <template>
   <div>
     <v-flex>
-      <v-btn to="/courses">
-        back
-      </v-btn>
+      <v-btn to="/courses">back</v-btn>
       <v-container row>
         <v-row align="center">
           <v-col class="text-center" cols="12" sm="8">

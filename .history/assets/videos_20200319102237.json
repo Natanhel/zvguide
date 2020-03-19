@@ -49,15 +49,6 @@
             }
         ]
     },
-    "real_world_vue.js": {
-        "path": "Real World Vue.js",
-        "level": "Beginner",
-        "data": [
-            { "name": "Intro to Real World Vue", "src": "297369661" },
-            { "name": "Creating our Project", "src": "277360353" },
-            { "name": "Optimizing your Editor", "src": "279903602" }
-        ]
-    },
     "mastering_vuex": {
         "path": "Mastering Vuex",
         "level": "Beginner",

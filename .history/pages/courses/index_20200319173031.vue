@@ -84,7 +84,7 @@ export default {
           header: true,
           children: [
             { id: 2, Name: 'Intro to Vue.js' },
-            { id: 3, Name: 'Real World Vue.js' },
+            { id: 3, Name: 'Real World Vue.js', locked: true },
             { id: 4, Name: 'Mastering Vuex' },
             { id: 5, Name: 'Next Level Vue' },
             { id: 6, Name: 'Watch Us Build a Trello Clone' }
@@ -158,7 +158,7 @@ export default {
     }
   },
   generate: {
-    fallback: 'courses'
+    fallback: '/courses'
   }
 }
 </script>

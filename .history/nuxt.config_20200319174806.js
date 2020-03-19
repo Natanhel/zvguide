@@ -42,27 +42,6 @@ export default {
     '@nuxtjs/vuetify'
   ],
 
-  generate: {
-    routes: [
-
-      '/courses/Intro_to_Vue.js',
-      '/courses/Real_World_Vue.js',
-      '/courses/Mastering_Vuex',
-      '/courses/Next_Level_Vue',
-      '/courses/Watch_Us_Build_a_Trello_Clone',
-
-      '/courses/Animating_Vue',
-      '/courses/Unit_Testing',
-      '/courses/Token_Based_Authentication',
-      '/courses/Scaling_Vue_with_Nuxt.js',
-      '/courses/Beautify_with_Vuetify',
-
-      '/courses/Component_Design_Patterns',
-      '/courses/Vue_3_Essentials',
-      '/courses/Vue_3_Reactivity',
-      '/courses/Advanced_Components'
-    ]
-  },
   /*
   ** Nuxt.js modules
   */
@@ -75,6 +54,17 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+  },
+  
+  generate: {
+    routes () {
+      return axios.get('https://my-api/users')
+        .then((res) => {
+          return res.data.map((user) => {
+            return '/users/' + user.id
+          })
+        })
+    }
   },
   /*
   ** vuetify module configuration

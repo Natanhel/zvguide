@@ -41,28 +41,30 @@ export default {
     '@nuxtjs/eslint-module',
     '@nuxtjs/vuetify'
   ],
-
+  
   generate: {
     routes: [
+      
+    '/courses/Intro to Vue.js',
+    '/courses/Real World Vue.js',
+    '/courses/Mastering Vuex',
+    '/courses/Next-Level Vue',
+    '/courses/Watch Us Build a Trello Clone',
 
-      '/courses/Intro_to_Vue.js',
-      '/courses/Real_World_Vue.js',
-      '/courses/Mastering_Vuex',
-      '/courses/Next_Level_Vue',
-      '/courses/Watch_Us_Build_a_Trello_Clone',
 
-      '/courses/Animating_Vue',
-      '/courses/Unit_Testing',
-      '/courses/Token_Based_Authentication',
-      '/courses/Scaling_Vue_with_Nuxt.js',
-      '/courses/Beautify_with_Vuetify',
+    '/courses/Animating Vue',
+    '/courses/Unit Testing',
+    '/courses/Token-Based Authentication',
+    '/courses/Scaling Vue with Nuxt.js',
+    '/courses/Beautify with Vuetify',
 
-      '/courses/Component_Design_Patterns',
-      '/courses/Vue_3_Essentials',
-      '/courses/Vue_3_Reactivity',
-      '/courses/Advanced_Components'
+
+    '/courses/Component Design Patterns',
+    '/courses/Vue 3 Essentials',
+    '/courses/Vue 3 Reactivity',
+    '/courses/Advanced Components'
     ]
-  },
+  }
   /*
   ** Nuxt.js modules
   */
