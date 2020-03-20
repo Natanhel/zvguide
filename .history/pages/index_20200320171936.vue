@@ -75,7 +75,10 @@ export default {
   },
   head () {
     return {
-      title: 'ZV Guide'
+      title: 'ZV Guide',
+      meta: [
+        { hid: 'description', name: 'description', content: 'My custom description' }
+      ]
     }
   }
 }

@@ -63,8 +63,8 @@
     "mastering_vuex": {
         "path": "Mastering Vuex",
         "level": "Beginner",
-        "links": [  "https://coursehunters.online/t/vuemastery-mastering-vuex-part-1/541",
-                    "https://coursehunters.online/t/vuemastery-mastering-vuex-part-2/542" ],
+        "links": [ "https://coursehunters.online/t/vuemastery-mastering-vuex-part-1/541",
+        , "https://coursehunters.online/t/vuemastery-mastering-vuex-part-2/542" ],
         "data": [
             {
                 "name": "Intro to Vuex",
@@ -470,8 +470,8 @@
     "advanced_components": {
         "path": "Advanced Components",
         "level": "Advanced",
-        "links": [  "https://coursehunters.online/t/vuemastery-advanced-components-part-1/544",
-                    "https://coursehunters.online/t/vuemastery-advanced-components-part-2/546" ],
+        "links": [ "https://coursehunters.online/t/vuemastery-advanced-components-part-1/544",
+        , "https://coursehunters.online/t/vuemastery-advanced-components-part-2/546",
         "data": [
             {
                 "name": "Advanced Components Intro",

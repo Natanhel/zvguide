@@ -63,8 +63,8 @@
     "mastering_vuex": {
         "path": "Mastering Vuex",
         "level": "Beginner",
-        "links": [  "https://coursehunters.online/t/vuemastery-mastering-vuex-part-1/541",
-                    "https://coursehunters.online/t/vuemastery-mastering-vuex-part-2/542" ],
+        "links": [ "https://coursehunters.online/t/vuemastery-mastering-vuex-part-1/541",
+        , "https://coursehunters.online/t/vuemastery-mastering-vuex-part-2/542" ],
         "data": [
             {
                 "name": "Intro to Vuex",
@@ -99,8 +99,8 @@
     "next_level_vue": {
         "path": "Next Level Vue",
         "level": "Beginner",
-        "links": [  "https://coursehunters.online/t/vuemastery-next-level-vue/543",
-                    "https://coursehunters.online/t/vuemastery-next-level-vue-part-2/796" ],
+        , "https://coursehunters.online/t/vuemastery-next-level-vue-part-2/796",
+        "links": [ "https://coursehunters.online/t/vuemastery-next-level-vue/543",
         "data": [
             {
                 "name": "Orientation",
@@ -159,7 +159,7 @@
     "watch_us_build_a_trello_clone": {
         "path": "Watch Us Build a Trello Clone",
         "level": "Beginner",
-        "links": [ "https://coursehunters.online/t/vuemastery-watch-us-build-a-trello-clone/1488" ],
+        "links": [ "https://coursehunters.online/t/vuemastery-watch-us-build-a-trello-clone/1488",
         "data": [
             {
                 "name": "1",
@@ -206,7 +206,7 @@
     "animating_vue": {
         "path": "Animating Vue",
         "level": "Intermediate",
-        "links": [ "https://coursehunters.online/t/vuemastery-animating-vue/2548" ],
+        "links": [ "https://coursehunters.online/t/vuemastery-animating-vue/2548",
         "data": [
             {
                 "name": "Why Animate",
@@ -249,7 +249,7 @@
     "unit_testing": {
         "path": "Unit Testing",
         "level": "Intermediate",
-        "links": [ "https://coursehunters.online/t/vuemastery-unit-testing/2938" ],
+        "links": [ "https://coursehunters.online/t/vuemastery-unit-testing/2938",
         "data": [
             {
                 "name": "What to Test",
@@ -268,7 +268,7 @@
     "token_based_authentication": {
         "path": "Token Based Authentication",
         "level": "Intermediate",
-        "links": [ "https://coursehunters.online/t/vuemastery-token-based-authentication/1487" ],
+        "links": [ "https://coursehunters.online/t/vuemastery-token-based-authentication/1487",
         "data": [
             {
                 "name": "Intro to JWT",
@@ -303,7 +303,7 @@
     "scaling_vue_with_nuxt.js": {
         "path": "Scaling Vue with Nuxt.js",
         "level": "Intermediate",
-        "links": [ "https://coursehunters.online/t/vuemastery-scaling-vue-with-nuxt-js/797" ],
+        "links": [ "https://coursehunters.online/t/vuemastery-scaling-vue-with-nuxt-js/797",
         "data": [
             {
                 "name": "Why Nuxt",
@@ -350,8 +350,8 @@
     "beautify_with_vuetify": {
         "path": "Beautify with Vuetify",
         "level": "Intermediate",
-        "links": [  "https://coursehunters.online/t/vuemastery-beautify-with-vuetify-part-1/2343",
-                    "https://coursehunters.online/t/vuemastery-beautify-with-vuetify-part-2/2595" ],
+        "links": [ "https://coursehunters.online/t/vuemastery-beautify-with-vuetify-part-1/2343",
+        , "https://coursehunters.online/t/vuemastery-beautify-with-vuetify-part-2/2595",
         "data": [
             {
                 "name": "Intro to Vuetify",
@@ -451,7 +451,7 @@
     "vue_3_reactivity": {
         "path": "Vue Reactivity",
         "level": "Advanced",
-        "links": [ "https://coursehunters.online/t/vuemastery-vue-3-reactivity/2960" ],
+        "links": [ "https://coursehunters.online/t/vuemastery-vue-3-reactivity/2960",
         "data": [
             {
                 "name": "Building Reactivity",
@@ -470,8 +470,8 @@
     "advanced_components": {
         "path": "Advanced Components",
         "level": "Advanced",
-        "links": [  "https://coursehunters.online/t/vuemastery-advanced-components-part-1/544",
-                    "https://coursehunters.online/t/vuemastery-advanced-components-part-2/546" ],
+        "links": [ "https://coursehunters.online/t/vuemastery-advanced-components-part-1/544",
+        , "https://coursehunters.online/t/vuemastery-advanced-components-part-2/546",
         "data": [
             {
                 "name": "Advanced Components Intro",

@@ -16,12 +16,6 @@
               allow="autoplay; fullscreen"
               allowfullscreen
             />
-            <h4>Textual Help & Materials</h4>
-            <div v-for="link in links" :key="link">
-              <a :href="link">
-                {{ link.split('/')[link.split('/').length-2].split('-').join(' ').split('vuemastery')[1] }}
-              </a>
-            </div>
           </v-col>
           <v-col sm="4" xs="12" class="text-center">
             <v-card
@@ -37,6 +31,12 @@
             </v-card>
           </v-col>
         </v-row>
+
+        <div v-for="link in links" :key="link">
+          <a :href="link">
+            {{ link.split('/')[link.split('/').length-2].split('-').join(' ').split('vuemastery')[1] }}
+          </a>
+        </div>
       </v-container>
     </v-flex>
   </div>
@@ -94,7 +94,13 @@ export default {
   },
   head () {
     return {
-      title: 'ZH Guide - ' + this.$route.params.id.split('_').join(' ')
+      title: 'Vue.js course',
+      meta: [
+        {
+          hid: 'index',
+          name: 'name'
+        }
+      ]
     }
   },
   generate: {

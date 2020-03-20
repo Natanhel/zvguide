@@ -75,7 +75,7 @@ export default {
   },
   head () {
     return {
-      title: 'ZV Guide'
+      title: 'ZV - Guide'
     }
   }
 }

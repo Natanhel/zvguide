@@ -75,7 +75,8 @@ export default {
   },
   head () {
     return {
-      title: 'ZV Guide'
+      title: 'ZV Guide',
+      { hid: 'description', name: 'description', content: 'My custom description' }
     }
   }
 }

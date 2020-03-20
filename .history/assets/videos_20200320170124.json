@@ -63,8 +63,8 @@
     "mastering_vuex": {
         "path": "Mastering Vuex",
         "level": "Beginner",
-        "links": [  "https://coursehunters.online/t/vuemastery-mastering-vuex-part-1/541",
-                    "https://coursehunters.online/t/vuemastery-mastering-vuex-part-2/542" ],
+        "links": [ "https://coursehunters.online/t/vuemastery-mastering-vuex-part-1/541",
+        , "https://coursehunters.online/t/vuemastery-mastering-vuex-part-2/542" ],
         "data": [
             {
                 "name": "Intro to Vuex",

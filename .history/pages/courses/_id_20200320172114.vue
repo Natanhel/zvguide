@@ -94,7 +94,13 @@ export default {
   },
   head () {
     return {
-      title: 'ZH Guide - ' + this.$route.params.id.split('_').join(' ')
+      title: 'ZH - Guide ' + this.$route.params.id,
+      meta: [
+        {
+          hid: 'index',
+          name: 'name'
+        }
+      ]
     }
   },
   generate: {

@@ -148,7 +148,13 @@ export default {
   },
   head () {
     return {
-      title: 'ZH Guide - Courses'
+      title: 'ZH Guide - Courses',
+      meta: [
+        {
+          hid: 'index',
+          name: ''
+        }
+      ]
     }
   },
   generate: {
