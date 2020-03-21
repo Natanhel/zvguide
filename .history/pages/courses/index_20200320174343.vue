@@ -15,27 +15,13 @@
         </v-flex>
         <v-flex>
           <v-card class="welcome-card">
-            <p class="heb-welcome">
-              ברוכים הבאים לחפיפת Vue!
-            </p>
-            <p class="heb-welcome">
-              לפניכם שלוש רמות קושי: מתחיל, בינוני, מתקדם
-            </p>
-            <p class="heb-welcome">
-              לכל רמת קושי קיימים כמה קורסים
-            </p>
-            <p class="heb-welcome">
-              כל קורס אורך בין חצי שעה לשעה וחצי
-            </p>
-            <p class="heb-welcome">
-              כמו כן, לומדים הכי טוב אם מתרגלים ולכן, מומלץ בחום להוריד את הסביבה אליכם למחשב ולכתוב קוד
-            </p>
-            <p class="heb-welcome">
-              בהצלחה!
-            </p>
-            <p class="heb-welcome">
-              אם אתם מוצאים בעיה כלשהי בלינקים יש ליצור קשר עם נתנאל
-            </p>
+            <p>ברוכים הבאים לחפיפת Vue!</p>
+            <p>לפניכם שלוש רמות קושי: מתחיל, בינוני, מתקדם</p>
+            <p>לכל רמת קושי קיימים כמה קורסים</p>
+            <p>כל קורס אורך בין חצי שעה לשעה וחצי</p>
+            <p>כמו כן, לומדים הכי טוב אם מתרגלים ולכן, מומלץ בחום להוריד את הסביבה אליכם למחשב ולכתוב קוד</p>
+            <p>בהצלחה!</p>
+            <p>אם אתם מוצאים בעיה כלשהי בלינקים יש ליצור קשר עם נתנאל</p>
             <v-card width="30vw" flat>
               <v-text-field
                 v-model="pwd"
@@ -85,6 +71,11 @@
 <script>
 import gsap from 'gsap'
 export default {
+// Called to know which transition to apply
+  transition (to, from) {
+    if (!from) { return 'slide-left' }
+    return +to.query.page < +from.query.page ? 'slide-right' : 'slide-left'
+  },
   components: {
   },
   data () {
@@ -172,7 +163,7 @@ export default {
 </script>
 
 <style scoped>
-.heb-welcome{
+p {
   direction: rtl;
 }
 
