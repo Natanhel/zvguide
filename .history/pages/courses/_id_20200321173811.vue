@@ -1,5 +1,8 @@
+/* eslint-disable vue/no-unused-components */
+/* eslint-disable no-tabs */
 <template>
   <div>
+    <checklist :videos="videos" />
     <v-flex>
       <v-btn to="/courses">
         back
@@ -10,7 +13,6 @@
             <h2>
               {{ activeName }}
             </h2>
-            <checklist :videos="videos" />
             <iframe
               :src="src"
               frameborder="0"

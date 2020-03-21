@@ -1,5 +1,8 @@
+/* eslint-disable vue/no-unused-components */
+/* eslint-disable no-tabs */
 <template>
   <div>
+    <checklist :videos="videos" />
     <v-flex>
       <v-btn to="/courses">
         back
@@ -9,8 +12,10 @@
           <v-col class="text-center" cols="12" sm="8">
             <h2>
               {{ activeName }}
+              <v-btn icon color="blue" @click="checklistDialog = !checklistDialog">
+                <v-icon>mdi-beaker-check</v-icon>
+              </v-btn>
             </h2>
-            <checklist :videos="videos" />
             <iframe
               :src="src"
               frameborder="0"

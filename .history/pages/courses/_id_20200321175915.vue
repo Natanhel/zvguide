@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-flex>
-      <v-btn to="/courses">
+      <v-btn to="/courses" style="margin-left: 2em;">
         back
       </v-btn>
       <v-container row>

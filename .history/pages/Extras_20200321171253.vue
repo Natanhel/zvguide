@@ -27,14 +27,6 @@ export default {
         {
           ref: 'https://www.crockford.com/',
           title: 'Dougles Crockford'
-        },
-        {
-          ref: 'https://www.medium.com/',
-          title: 'Medium'
-        },
-        {
-          ref: 'https://ditto-cp.sourceforge.io/',
-          title: 'Ditto - Clipboard Manager'
         }
       ]
     }

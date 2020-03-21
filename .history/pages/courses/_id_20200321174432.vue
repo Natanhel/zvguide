@@ -1,16 +1,21 @@
+/* eslint-disable vue/no-unused-components */
+/* eslint-disable no-tabs */
 <template>
   <div>
     <v-flex>
-      <v-btn to="/courses">
-        back
-      </v-btn>
+      <v-row align="center">
+        <v-btn to="/courses" style="margin-left: 1em;">
+          back
+        </v-btn>
+        <checklist :videos="videos" />
+      </v-row>
+
       <v-container row>
         <v-row align="center">
           <v-col class="text-center" cols="12" sm="8">
             <h2>
               {{ activeName }}
             </h2>
-            <checklist :videos="videos" />
             <iframe
               :src="src"
               frameborder="0"

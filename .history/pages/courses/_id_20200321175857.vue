@@ -1,9 +1,10 @@
 <template>
   <div>
     <v-flex>
-      <v-btn to="/courses">
+      <v-btn to="/courses" style="margin-left: 2em;">
         back
       </v-btn>
+
       <v-container row>
         <v-row align="center">
           <v-col class="text-center" cols="12" sm="8">

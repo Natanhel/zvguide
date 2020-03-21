@@ -1,9 +1,10 @@
 <template>
   <div>
     <v-flex>
-      <v-btn to="/courses">
+      <v-btn to="/courses" style="margin-left: 2em;">
         back
       </v-btn>
+
       <v-container row>
         <v-row align="center">
           <v-col class="text-center" cols="12" sm="8">
@@ -17,7 +18,7 @@
               allow="autoplay; fullscreen"
               allowfullscreen
             />
-            <h4>Textual Help & Materials</h4>
+            <h4>{`Textual Help & Materials`}</h4>
             <div v-for="link in links" :key="link">
               <a :href="link">
                 {{ link.split('/')[link.split('/').length-2].split('-').join(' ').split('vuemastery')[1] }}

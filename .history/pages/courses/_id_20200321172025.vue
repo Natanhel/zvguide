@@ -1,5 +1,8 @@
+/* eslint-disable vue/no-unused-components */
+/* eslint-disable no-tabs */
 <template>
   <div>
+    <checklist :videos="videos"/>
     <v-flex>
       <v-btn to="/courses">
         back
@@ -9,8 +12,10 @@
           <v-col class="text-center" cols="12" sm="8">
             <h2>
               {{ activeName }}
+              <v-btn icon color="blue" @click="checklistDialog = !checklistDialog">
+                <v-icon>mdi-beaker-check</v-icon>
+              </v-btn>
             </h2>
-            <checklist :videos="videos" />
             <iframe
               :src="src"
               frameborder="0"
@@ -54,7 +59,8 @@ export default {
       activeName: 'Vue Instance',
       src: 'https://player.vimeo.com/video/398745560',
       links: [],
-      videos: []
+      videos: [],
+      checklistDialog: false
     }
   },
   computed: {
@@ -99,6 +105,11 @@ export default {
     this.play(firstLoad)
   },
   methods: {
+    courseChange (video) {
+      // save checklist change to local storage
+      localStorage[video.parsedName] = video.watched
+      // console.log('Local Storage updates: ' + video.parsedName + ' to value: ' + localStorage[video.parsedName])
+    },
     play ({ name, src, links }) {
       this.src = src
       if (this.$route.params.id.includes('Trello')) {

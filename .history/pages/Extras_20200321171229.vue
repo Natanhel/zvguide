@@ -1,12 +1,10 @@
 <template>
   <div>
     <h1>Extras</h1>
-    <v-card
-      v-for="(link,index) in links"
-      id="linkCard"
-      :key="index"
-    >
+    <v-card id="linkCard">
       <a
+        v-for="(link,index) in links"
+        :key="index"
         :href="link.ref"
       >
         {{ link.title }}
@@ -27,14 +25,6 @@ export default {
         {
           ref: 'https://www.crockford.com/',
           title: 'Dougles Crockford'
-        },
-        {
-          ref: 'https://www.medium.com/',
-          title: 'Medium'
-        },
-        {
-          ref: 'https://ditto-cp.sourceforge.io/',
-          title: 'Ditto - Clipboard Manager'
         }
       ]
     }
