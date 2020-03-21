@@ -16,23 +16,23 @@
           flat
         >
           <v-checkbox
-            v-model="v.watched"
+            v-model="v.name"
             style="padding: 0em; padding-left: 2em; margin: 0em;"
             :label="v.name"
-            @change="courseChange(v)"
+            @click="courseChange(v.name)"
           />
         </v-card>
-        <!-- <v-card-action> -->
-        <v-spacer />
-        <v-btn
-          color="blue"
-          text
-          rounded
-          @click="checklistDialog = !checklistDialog"
-        >
-          Close
-        </v-btn>
-        <!-- </v-card-action> -->
+        <v-card-action>
+          <v-spacer />
+          <v-btn
+            color="blue"
+            text
+            rounded
+            @click="checklistDialog = !checklistDialog"
+          >
+            Close
+          </v-btn>
+        </v-card-action>
       </v-card>
     </v-dialog>
     <v-flex>
@@ -44,7 +44,7 @@
           <v-col class="text-center" cols="12" sm="8">
             <h2>
               {{ activeName }}
-              <v-btn icon color="blue" @click="checklistDialog = !checklistDialog">
+              <v-btn icon color="blue" @click="checklist">
                 <v-icon>mdi-beaker-check</v-icon>
               </v-btn>
             </h2>
@@ -60,6 +60,7 @@
                 {{ link.split('/')[link.split('/').length-2].split('-').join(' ').split('vuemastery')[1] }}
               </a>
             </div>
+            </v-dialog>
           </v-col>
           <v-col sm="4" xs="12" class="text-center">
             <v-card
@@ -98,30 +99,19 @@ export default {
   },
   mounted () {
     const importedVideos = []
-    let parsed
     const {
+      // path,
+      // level,
       links,
       data
     } = require('@/assets/videos.json')[this.$route.params.id.toLowerCase()]
     data.forEach((e) => {
-      parsed = e.name.toLowerCase().split(' ').join('_')
       try {
         const newName = e.name
         const dataTransform = {
           name: newName,
-          parsedName: parsed,
-          watched: false,
           src: 'https://player.vimeo.com/video/' + e.src
         }
-
-        try {
-          dataTransform.watched = (localStorage[parsed] === 'true')
-          // console.log('updated ' + parsed + ' to ' + localStorage[parsed])
-        } catch (error) {
-          // console.log('no data in localStorage for ' + error.message)
-          localStorage[parsed] = false
-        }
-
         importedVideos.push(dataTransform)
       } catch (error) {
         // console.log(error.message)
@@ -131,12 +121,16 @@ export default {
     this.videos = importedVideos
     const firstLoad = importedVideos[0]
     this.play(firstLoad)
+    data.forEach((e) => {
+      this.checklist[e.name] = localStorage[e.name]
+    })
   },
   methods: {
-    courseChange (video) {
-      // save checklist change to local storage
-      localStorage[video.parsedName] = video.watched
-      // console.log('Local Storage updates: ' + video.parsedName + ' to value: ' + localStorage[video.parsedName])
+    courseChange (name) {
+      localStorage[name] = this.checklist[name]
+    },
+    checklist () {
+      this.checklistDialog = true
     },
     play ({ name, src, links }) {
       this.src = src

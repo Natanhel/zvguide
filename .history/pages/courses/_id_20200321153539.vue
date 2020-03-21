@@ -16,10 +16,10 @@
           flat
         >
           <v-checkbox
-            v-model="v.watched"
+            v-model="checklist[v.name.toLowerCase().split(' ').join('_')]"
             style="padding: 0em; padding-left: 2em; margin: 0em;"
             :label="v.name"
-            @change="courseChange(v)"
+            @change="courseChange(v.name)"
           />
         </v-card>
         <!-- <v-card-action> -->
@@ -88,7 +88,8 @@ export default {
       src: 'https://player.vimeo.com/video/398745560',
       links: [],
       videos: [],
-      checklistDialog: false
+      checklistDialog: false,
+      checklist: []
     }
   },
   computed: {
@@ -98,45 +99,35 @@ export default {
   },
   mounted () {
     const importedVideos = []
-    let parsed
     const {
       links,
       data
     } = require('@/assets/videos.json')[this.$route.params.id.toLowerCase()]
     data.forEach((e) => {
-      parsed = e.name.toLowerCase().split(' ').join('_')
       try {
         const newName = e.name
         const dataTransform = {
           name: newName,
-          parsedName: parsed,
-          watched: false,
           src: 'https://player.vimeo.com/video/' + e.src
         }
-
-        try {
-          dataTransform.watched = (localStorage[parsed] === 'true')
-          // console.log('updated ' + parsed + ' to ' + localStorage[parsed])
-        } catch (error) {
-          // console.log('no data in localStorage for ' + error.message)
-          localStorage[parsed] = false
-        }
-
         importedVideos.push(dataTransform)
       } catch (error) {
-        // console.log(error.message)
+        console.log(error.message)
       }
     })
     this.links = links
     this.videos = importedVideos
     const firstLoad = importedVideos[0]
     this.play(firstLoad)
+    // const checklistLoad = []
+    // this.checklist = checklistLoad
   },
   methods: {
-    courseChange (video) {
+    courseChange (name) {
       // save checklist change to local storage
-      localStorage[video.parsedName] = video.watched
-      // console.log('Local Storage updates: ' + video.parsedName + ' to value: ' + localStorage[video.parsedName])
+      const parsedName = name.toLowerCase().split(' ').join('_')
+      localStorage[parsedName] = this.checklist[parsedName]
+      console.log('Local Storage updates: ' + parsedName + ' to value: ' + localStorage[parsedName])
     },
     play ({ name, src, links }) {
       this.src = src

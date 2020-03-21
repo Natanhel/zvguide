@@ -113,7 +113,7 @@ export default {
           to: '/programs'
         },
         {
-          icon: 'mdi-plus',
+          icon: '',
           title: 'Extras',
           to: '/extras'
         }

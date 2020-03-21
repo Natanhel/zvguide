@@ -15,12 +15,10 @@
           :key="v.name"
           flat
         >
-          <v-checkbox
-            v-model="v.watched"
-            style="padding: 0em; padding-left: 2em; margin: 0em;"
-            :label="v.name"
+          <v-card
+            :color="v.watched ? black : white"
             @change="courseChange(v)"
-          />
+          />{{ v.name }}
         </v-card>
         <!-- <v-card-action> -->
         <v-spacer />
@@ -115,16 +113,16 @@ export default {
         }
 
         try {
-          dataTransform.watched = (localStorage[parsed] === 'true')
-          // console.log('updated ' + parsed + ' to ' + localStorage[parsed])
+          dataTransform.watched = localStorage[parsed]
+          console.log('updated ' + parsed + ' to ' + localStorage[parsed])
         } catch (error) {
-          // console.log('no data in localStorage for ' + error.message)
+          console.log('no data in localStorage for ' + error.message)
           localStorage[parsed] = false
         }
 
         importedVideos.push(dataTransform)
       } catch (error) {
-        // console.log(error.message)
+        console.log(error.message)
       }
     })
     this.links = links
@@ -136,7 +134,7 @@ export default {
     courseChange (video) {
       // save checklist change to local storage
       localStorage[video.parsedName] = video.watched
-      // console.log('Local Storage updates: ' + video.parsedName + ' to value: ' + localStorage[video.parsedName])
+      console.log('Local Storage updates: ' + video.parsedName + ' to value: ' + localStorage[video.parsedName])
     },
     play ({ name, src, links }) {
       this.src = src

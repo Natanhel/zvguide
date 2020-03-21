@@ -16,23 +16,22 @@
           flat
         >
           <v-checkbox
-            v-model="v.watched"
+            :v-model="localStorage[v.name.toLowerCase().split(' ').join('_')]"
             style="padding: 0em; padding-left: 2em; margin: 0em;"
             :label="v.name"
-            @change="courseChange(v)"
           />
         </v-card>
-        <!-- <v-card-action> -->
-        <v-spacer />
-        <v-btn
-          color="blue"
-          text
-          rounded
-          @click="checklistDialog = !checklistDialog"
-        >
-          Close
-        </v-btn>
-        <!-- </v-card-action> -->
+        <v-card-action>
+          <v-spacer />
+          <v-btn
+            color="blue"
+            text
+            rounded
+            @click="checklistDialog = !checklistDialog"
+          >
+            Close
+          </v-btn>
+        </v-card-action>
       </v-card>
     </v-dialog>
     <v-flex>
@@ -60,6 +59,7 @@
                 {{ link.split('/')[link.split('/').length-2].split('-').join(' ').split('vuemastery')[1] }}
               </a>
             </div>
+            </v-dialog>
           </v-col>
           <v-col sm="4" xs="12" class="text-center">
             <v-card
@@ -82,13 +82,27 @@
 
 <script>
 export default {
+  created () {
+    let { data } = require('@/assets/videos.json')[this.$route.params.id.toLowerCase()]
+    data.forEach((e) => {
+      // checklist loading from localstorage
+      const parsedName = e.name.toLowerCase().split(' ').join('_')
+      try {
+        this.checklist[parsedName] = localStorage[parsedName]
+      } catch (error) {
+        console.log('no data in localStorage for ' + error.message)
+        this.checklist[parsedName] = false
+      }
+    })
+  },
   data () {
     return {
       activeName: 'Vue Instance',
       src: 'https://player.vimeo.com/video/398745560',
       links: [],
       videos: [],
-      checklistDialog: false
+      checklistDialog: false,
+      checklist: []
     }
   },
   computed: {
@@ -98,30 +112,19 @@ export default {
   },
   mounted () {
     const importedVideos = []
-    let parsed
     const {
+      // path,
+      // level,
       links,
       data
     } = require('@/assets/videos.json')[this.$route.params.id.toLowerCase()]
     data.forEach((e) => {
-      parsed = e.name.toLowerCase().split(' ').join('_')
       try {
         const newName = e.name
         const dataTransform = {
           name: newName,
-          parsedName: parsed,
-          watched: false,
           src: 'https://player.vimeo.com/video/' + e.src
         }
-
-        try {
-          dataTransform.watched = (localStorage[parsed] === 'true')
-          // console.log('updated ' + parsed + ' to ' + localStorage[parsed])
-        } catch (error) {
-          // console.log('no data in localStorage for ' + error.message)
-          localStorage[parsed] = false
-        }
-
         importedVideos.push(dataTransform)
       } catch (error) {
         // console.log(error.message)
@@ -133,10 +136,10 @@ export default {
     this.play(firstLoad)
   },
   methods: {
-    courseChange (video) {
+    courseChange (name) {
       // save checklist change to local storage
-      localStorage[video.parsedName] = video.watched
-      // console.log('Local Storage updates: ' + video.parsedName + ' to value: ' + localStorage[video.parsedName])
+      const parsedName = name.toLowerCase().split(' ').join('_')
+      localStorage[parsedName] = this.checklist[parsedName]
     },
     play ({ name, src, links }) {
       this.src = src

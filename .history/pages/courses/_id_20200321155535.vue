@@ -88,7 +88,8 @@ export default {
       src: 'https://player.vimeo.com/video/398745560',
       links: [],
       videos: [],
-      checklistDialog: false
+      checklistDialog: false,
+      checklist: []
     }
   },
   computed: {
@@ -98,45 +99,58 @@ export default {
   },
   mounted () {
     const importedVideos = []
-    let parsed
     const {
       links,
       data
     } = require('@/assets/videos.json')[this.$route.params.id.toLowerCase()]
     data.forEach((e) => {
-      parsed = e.name.toLowerCase().split(' ').join('_')
       try {
         const newName = e.name
         const dataTransform = {
           name: newName,
-          parsedName: parsed,
           watched: false,
           src: 'https://player.vimeo.com/video/' + e.src
         }
-
+        const parsedName = e.parsedName
         try {
-          dataTransform.watched = (localStorage[parsed] === 'true')
-          // console.log('updated ' + parsed + ' to ' + localStorage[parsed])
+          dataTransform.watched = localStorage[parsedName]
+          console.log('updated ' + parsedName + ' to ' + localStorage[parsedName])
         } catch (error) {
-          // console.log('no data in localStorage for ' + error.message)
-          localStorage[parsed] = false
+          console.log('no data in localStorage for ' + error.message)
+          dataTransform.watched = false
+          localStorage[parsedName] = false
         }
 
         importedVideos.push(dataTransform)
       } catch (error) {
-        // console.log(error.message)
+        console.log(error.message)
       }
     })
     this.links = links
+    // const checklistLoad = []
+    // importedVideos.forEach((e) => {
+    //   // checklist loading from localstorage
+    //   const parsedName = e.parsedName
+    //   try {
+    //     e.watched = localStorage[parsedName]
+    //     console.log('updated ' + parsedName + ' to ' + localStorage[parsedName])
+    //   } catch (error) {
+    //     console.log('no data in localStorage for ' + error.message)
+    //     e.watched = false
+    //     localStorage[parsedName] = false
+    //   }
+    // })
+
     this.videos = importedVideos
     const firstLoad = importedVideos[0]
     this.play(firstLoad)
+    // this.checklist = checklistLoad
   },
   methods: {
     courseChange (video) {
       // save checklist change to local storage
       localStorage[video.parsedName] = video.watched
-      // console.log('Local Storage updates: ' + video.parsedName + ' to value: ' + localStorage[video.parsedName])
+      console.log('Local Storage updates: ' + video.parsedName + ' to value: ' + localStorage[video.parsedName])
     },
     play ({ name, src, links }) {
       this.src = src

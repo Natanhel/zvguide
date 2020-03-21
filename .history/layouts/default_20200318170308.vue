@@ -111,11 +111,6 @@ export default {
           icon: 'mdi-apps',
           title: 'Programs',
           to: '/programs'
-        },
-        {
-          icon: 'mdi-plus',
-          title: 'Extras',
-          to: '/extras'
         }
       ],
       miniVariant: false,
