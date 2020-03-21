@@ -46,7 +46,7 @@
           </p>
           <p>I wish you well on your studying and hope you would enjoy it as much as I do.</p>
           <div class="text-xs-right">
-            <em><small>&mdash; Natanhel Poliszuk</small></em>
+            <em @click="aboutMe"><small>&mdash; Natanhel Poliszuk</small></em>
           </div>
         </v-card-text>
         <v-card-actions>
@@ -74,7 +74,7 @@ export default {
     VuetifyLogo
   },
   data () {
-    return {
+    return { 
       aboutMe: false
     }
   },

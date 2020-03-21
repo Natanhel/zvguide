@@ -4,6 +4,7 @@
     justify-center
     align-center
   >
+    <v-dialog v-model="aboutMe" />
     <v-flex
       xs12
       sm8
@@ -45,7 +46,7 @@
             </a>.
           </p>
           <p>I wish you well on your studying and hope you would enjoy it as much as I do.</p>
-          <div class="text-xs-right">
+          <div class="text-xs-right" @click="aboutMe = !aboutMe">
             <em><small>&mdash; Natanhel Poliszuk</small></em>
           </div>
         </v-card-text>

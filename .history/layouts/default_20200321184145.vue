@@ -29,12 +29,10 @@
           it was carefully designed in order to provide a
           vault of information for future self
           <v-icon>mdi-emoticon-cool-outline</v-icon>
-        </v-card-text>
-        <v-card-text>
           (and for the sake of info-sharing as well)
         </v-card-text>
         <v-card-action>
-          <v-btn class="closeBtn" color="primary" @click="aboutMe = !aboutMe">
+          <v-btn color="green" @click="aboutMe = !aboutMe">
             close
           </v-btn>
         </v-card-action>
@@ -126,10 +124,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.closeBtn{
-  padding: 1em;
-  margin: 1em;
-}
-</style>

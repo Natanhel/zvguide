@@ -1,0 +1,32 @@
+[
+    {
+      "ref": "https://www.vuemastery.com/pdf/Vue-Essentials-Cheat-Sheet.pdf",
+      "title": "Vue Essentials - Cheat Sheet"
+    },
+    {
+      "ref": "https://www.crockford.com/",
+      "title": "Dougles Crockford"
+    },
+    {
+      "ref": "https://www.medium.com/",
+      "title": "Medium"
+    },
+    {
+      "ref": "https://ditto-cp.sourceforge.io/",
+      "title": "Ditto - Clipboard Manager"
+    },
+ {   
+    "ref": "https://code.visualstudio.com/docs/languages/javascript#_intellisense",
+    "title": "intellisense"
+},
+{
+    "ref": "https://code.visualstudio.com/docs/editor/intellisense#_tab-completion",
+    "title": "Auto tab completion"
+},
+{
+    "ref": "https://code.visualstudio.com/docs/editor/refactoring",
+    "title": "VSCode refactoring"
+
+}
+  
+]

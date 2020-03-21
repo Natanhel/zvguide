@@ -52,7 +52,7 @@
         <v-card-actions>
           <v-spacer />
           <v-btn
-            color="primary"
+            color="green"
             nuxt
             to="/courses"
           >

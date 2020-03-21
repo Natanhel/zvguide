@@ -34,7 +34,7 @@
       </v-card>
     </v-dialog>
 
-    <v-btn icon color="primary" @click="checklistDialog = !checklistDialog">
+    <v-btn icon color="blue" @click="checklistDialog = !checklistDialog">
       <v-icon>mdi-beaker-check</v-icon>
     </v-btn>
   </div>

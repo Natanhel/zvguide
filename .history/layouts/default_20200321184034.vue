@@ -14,7 +14,7 @@
 
         <v-card-text>
           I enjoy cooking, music, aquascaping, web surfing,
-          chess, solving riddles and building new projects
+          chess, solving riddles, building new projects
         </v-card-text>
 
         <v-card-text>
@@ -27,14 +27,10 @@
           Most of what you see in the web here
           is a hoarding symptom I have about knowledge and
           it was carefully designed in order to provide a
-          vault of information for future self
-          <v-icon>mdi-emoticon-cool-outline</v-icon>
-        </v-card-text>
-        <v-card-text>
-          (and for the sake of info-sharing as well)
+          vault of information for future self <v-icon>mdi-emoticon-cool-outline</v-icon>
         </v-card-text>
         <v-card-action>
-          <v-btn class="closeBtn" color="primary" @click="aboutMe = !aboutMe">
+          <v-btn color="green" @click="aboutMe = !aboutMe">
             close
           </v-btn>
         </v-card-action>
@@ -126,10 +122,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.closeBtn{
-  padding: 1em;
-  margin: 1em;
-}
-</style>

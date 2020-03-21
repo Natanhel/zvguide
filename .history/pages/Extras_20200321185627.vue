@@ -8,7 +8,6 @@
     >
       <a
         :href="link.ref"
-        target="_blank"
       >
         {{ link.title }}
       </a>

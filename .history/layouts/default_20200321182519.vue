@@ -2,43 +2,9 @@
   <v-app dark>
     <v-dialog
       v-model="aboutMe"
-      max-width="450"
+      max-width="350"
     >
-      <v-card>
-        <v-card-title>About Me</v-card-title>
-        <v-card-text>
-          I graduated the Technion CS faculty at 2019
-          with more than 3 years of experience coding
-          industrial back-end and front-end technologies
-        </v-card-text>
-
-        <v-card-text>
-          I enjoy cooking, music, aquascaping, web surfing,
-          chess, solving riddles and building new projects
-        </v-card-text>
-
-        <v-card-text>
-          This website was built within 2 days period
-          with the help of Nuxt.js, Vue.js and Heroku
-          for hosting services
-        </v-card-text>
-
-        <v-card-text>
-          Most of what you see in the web here
-          is a hoarding symptom I have about knowledge and
-          it was carefully designed in order to provide a
-          vault of information for future self
-          <v-icon>mdi-emoticon-cool-outline</v-icon>
-        </v-card-text>
-        <v-card-text>
-          (and for the sake of info-sharing as well)
-        </v-card-text>
-        <v-card-action>
-          <v-btn class="closeBtn" color="primary" @click="aboutMe = !aboutMe">
-            close
-          </v-btn>
-        </v-card-action>
-      </v-card>
+      <v-card>hello</v-card>
     </v-dialog>
     <v-navigation-drawer
       v-model="drawer"
@@ -70,19 +36,61 @@
       app
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+      <!-- <v-btn
+        icon
+        @click.stop="miniVariant = !miniVariant"
+      >
+        <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
+      </v-btn>
+      <v-btn
+        icon
+        @click.stop="clipped = !clipped"
+      >
+        <v-icon>mdi-application</v-icon>
+      </v-btn>
+      <v-btn
+        icon
+        @click.stop="fixed = !fixed"
+      >
+        <v-icon>mdi-minus</v-icon>
+      </v-btn> -->
       <v-toolbar-title v-text="title" />
       <v-spacer />
+      <!-- <v-btn
+        icon
+        @click.stop="rightDrawer = !rightDrawer"
+      >
+        <v-icon>mdi-menu</v-icon>
+      </v-btn> -->
     </v-app-bar>
     <v-content>
       <v-container>
         <nuxt />
       </v-container>
     </v-content>
+    <!-- <v-navigation-drawer
+      v-model="rightDrawer"
+      :right="right"
+      temporary
+      fixed
+    >
+      <v-list>
+        <v-list-item @click.native="right = !right">
+          <v-list-item-action>
+            <v-icon light>
+              mdi-repeat
+            </v-icon>
+          </v-list-item-action>
+          <v-list-item-title>Switch drawer (click me)</v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer> -->
     <v-footer
       :fixed="fixed"
       app
+      @click="aboutMe = !aboutMe"
     >
-      <span @click="aboutMe = !aboutMe">&copy; {{ new Date().getFullYear() }} - Natanhel Poliszuk</span>
+      <span>&copy; {{ new Date().getFullYear() }} - Natanhel Poliszuk</span>
     </v-footer>
   </v-app>
 </template>
@@ -126,10 +134,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.closeBtn{
-  padding: 1em;
-  margin: 1em;
-}
-</style>

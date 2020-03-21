@@ -33,8 +33,8 @@
         <v-card-text>
           (and for the sake of info-sharing as well)
         </v-card-text>
-        <v-card-action>
-          <v-btn class="closeBtn" color="primary" @click="aboutMe = !aboutMe">
+        <v-card-action  style="direction: rtl;" >
+          <v-btn color="green" @click="aboutMe = !aboutMe">
             close
           </v-btn>
         </v-card-action>
@@ -126,10 +126,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.closeBtn{
-  padding: 1em;
-  margin: 1em;
-}
-</style>

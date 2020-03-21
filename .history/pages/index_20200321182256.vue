@@ -4,6 +4,7 @@
     justify-center
     align-center
   >
+    <v-dialog v-model="aboutMe" />
     <v-flex
       xs12
       sm8
