@@ -131,7 +131,7 @@ export default {
     }
   },
   mounted () {
-    // console.log('mounted courses index')
+    console.log('mounted courses index')
     if (localStorage.correct_password === 'true') {
       this.welcomeCard = false
     }

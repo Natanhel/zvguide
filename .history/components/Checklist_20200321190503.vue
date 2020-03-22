@@ -20,15 +20,15 @@
             @change="courseChange(v)"
           />
         </v-card>
+        <!-- <v-card-action> -->
         <v-spacer />
         <v-btn
           color="primary"
-          text
-          rounded
           @click="checklistDialog = !checklistDialog"
         >
           Close
         </v-btn>
+      <!-- </v-card-action> -->
       </v-card>
     </v-dialog>
 
@@ -57,9 +57,6 @@ export default {
       checklistDialog: this.dialog
     }
   },
-  // mounted () {
-  //   console.log('mounteed checklist')
-  // },
   updated () {
     this.videosData = this.videos
   },

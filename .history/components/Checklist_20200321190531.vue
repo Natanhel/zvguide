@@ -57,9 +57,6 @@ export default {
       checklistDialog: this.dialog
     }
   },
-  // mounted () {
-  //   console.log('mounteed checklist')
-  // },
   updated () {
     this.videosData = this.videos
   },

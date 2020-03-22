@@ -63,7 +63,7 @@ export default {
     }
   },
   mounted () {
-    // console.log('moumted ' + this.$route.params.id)
+    console.log('moumted' + this.$route.params.id)
     const importedVideos = []
     let parsed
     const {
