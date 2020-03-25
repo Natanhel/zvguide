@@ -1,6 +1,6 @@
-# nuxt
+# zvguide
 
-> My riveting Nuxt.js project
+> My kickass Nuxt.js project
 
 ## Build Setup
 

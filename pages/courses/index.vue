@@ -84,6 +84,7 @@
 
 <script>
 import gsap from 'gsap'
+import bcrypt from 'bcryptjs'
 export default {
   components: {
   },
@@ -146,7 +147,12 @@ export default {
       return '/courses/' + name.split(' ').join('_')
     },
     staggerOn () {
-      if (this.pwd !== '2020zahal') { return }
+      // if (this.pwd !== '2020zahal') { return }
+      // Load hash from your password DB.
+      const hash = '$2y$12$6GlkOUy5fkAqY7HlJ3fcreSs93ehajrPf9D4wBgtkfLUP/Yh/rxvW'
+      // eslint-disable-next-line handle-callback-err
+      const pwdEnteredIsCorrect = bcrypt.compareSync(this.pwd, hash)
+      if (!pwdEnteredIsCorrect) { return }
       this.welcomeCard = !this.welcomeCard
       localStorage.correct_password = true
       setTimeout(() => {
@@ -207,5 +213,14 @@ export default {
   width: 100%;
   margin: 1em;
   direction: rtl;
+}
+
+p,v-card-title,v-btn,
+h1,h2,h3,h4,h5 {
+     -moz-user-select: none; /* Firefox */
+      -ms-user-select: none; /* Internet Explorer */
+   -khtml-user-select: none; /* KHTML browsers (e.g. Konqueror) */
+  -webkit-user-select: none; /* Chrome, Safari, and Opera */
+  -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
 }
 </style>
