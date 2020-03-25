@@ -2,9 +2,19 @@
   <div>
     <h1>Extras</h1>
     <v-row>
-      <v-col v-for="(link, index) in links" :key="index" cols="12" sm="6">
-        <v-card class="linkCard">
-          <a :href="link.ref" target="_blank">
+      <v-col 
+        v-for="(link,index) in links"
+        :key="index"
+        cols="12"
+        sm="4"
+        >
+        <v-card
+          class="linkCard"
+        >
+          <a
+            :href="link.ref"
+            target="_blank"
+          >
             {{ link.title }}
           </a>
         </v-card>
@@ -15,16 +25,16 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
-      links: require('@/assets/extras.json')
-    }
+      links: require("@/assets/extras.json")
+    };
   }
-}
+};
 </script>
 
 <style>
-.linkCard {
+#linkCard {
   padding: 1em;
   margin: 0.5em;
 }

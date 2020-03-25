@@ -150,7 +150,8 @@ export default {
       // Load bcrypt hash
       const hash = '$2y$12$6GlkOUy5fkAqY7HlJ3fcreSs93ehajrPf9D4wBgtkfLUP/Yh/rxvW'
       // eslint-disable-next-line handle-callback-err
-      if (!bcrypt.compareSync(this.pwd, hash)) { return }
+      const pwdEnteredIsCorrect = bcrypt.compareSync(this.pwd, hash)
+      if (!pwdEnteredIsCorrect) { return }
       this.welcomeCard = !this.welcomeCard
       localStorage.correct_password = true
       setTimeout(() => {

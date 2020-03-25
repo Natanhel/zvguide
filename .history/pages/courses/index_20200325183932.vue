@@ -148,9 +148,14 @@ export default {
     },
     staggerOn () {
       // Load bcrypt hash
-      const hash = '$2y$12$6GlkOUy5fkAqY7HlJ3fcreSs93ehajrPf9D4wBgtkfLUP/Yh/rxvW'
       // eslint-disable-next-line handle-callback-err
-      if (!bcrypt.compareSync(this.pwd, hash)) { return }
+      if (!bcrypt.compareSync(
+        this.pwd,
+        '$2y$12$6GlkOUy5fkAqY7HlJ3fcreSs93ehajrPf9D4wBgtkfLUP/Yh/rxvW'
+        )
+      ) { 
+        return
+      }
       this.welcomeCard = !this.welcomeCard
       localStorage.correct_password = true
       setTimeout(() => {
