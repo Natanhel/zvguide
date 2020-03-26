@@ -7,9 +7,8 @@
       <v-container row>
         <v-row align="center">
           <v-col class="text-center" cols="12" sm="8">
-            <h1>{{ this.$route.params.id.split('_').join(' ') }}</h1>
             <h2>
-              {{ activeName }}
+              {{ this.$route.params.id.split('_').join(' ') }} - {{ activeName }}
             </h2>
             <checklist :videos="videos" />
             <iframe

@@ -146,7 +146,7 @@ export default {
     getName (name) {
       return '/courses/' + name.split(' ').join('_')
     },
-    staggerOn () {
+    staggerOn() {
       // Load bcrypt hash
       const hash = '$2y$12$6GlkOUy5fkAqY7HlJ3fcreSs93ehajrPf9D4wBgtkfLUP/Yh/rxvW'
       // eslint-disable-next-line handle-callback-err
@@ -177,15 +177,15 @@ export default {
 </script>
 
 <style scoped>
-.heb-welcome {
+.heb-welcome{
   direction: rtl;
 }
 
-.v-treeview {
+.v-treeview{
   direction: rtl;
 }
 
-.lesson-card {
+.lesson-card{
   padding: 1em;
   margin: 1em;
   width: 10em;
@@ -206,24 +206,18 @@ export default {
   transition: opacity 0.5s ease-out;
 }
 
-.level {
+.level{
   padding: 1em;
   width: 100%;
   margin: 1em;
   direction: rtl;
 }
 
-p,
-v-card-title,
-v-btn,
-h1,
-h2,
-h3,
-h4,
-h5 {
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* Internet Explorer */
-  -khtml-user-select: none; /* KHTML browsers (e.g. Konqueror) */
+p,v-card-title,v-btn,
+h1,h2,h3,h4,h5 {
+     -moz-user-select: none; /* Firefox */
+      -ms-user-select: none; /* Internet Explorer */
+   -khtml-user-select: none; /* KHTML browsers (e.g. Konqueror) */
   -webkit-user-select: none; /* Chrome, Safari, and Opera */
   -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
 }

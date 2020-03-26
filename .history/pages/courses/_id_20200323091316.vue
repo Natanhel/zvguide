@@ -7,7 +7,6 @@
       <v-container row>
         <v-row align="center">
           <v-col class="text-center" cols="12" sm="8">
-            <h1>{{ this.$route.params.id.split('_').join(' ') }}</h1>
             <h2>
               {{ activeName }}
             </h2>
@@ -101,7 +100,7 @@ export default {
     this.play(firstLoad)
   },
   methods: {
-    play({ name, src }) {
+    play ({ name, src, links }) {
       this.src = src
       if (this.$route.params.id.includes('Trello')) {
         this.activeName = 'Watch Us Build a Trello Clone #' + name
@@ -130,39 +129,33 @@ export default {
   align-content: center;
 }
 
-.lessons {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
+.lessons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
 }
 body {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 iframe {
-  display: block;
-  width: 100vw;
-  max-width: 100%;
-  height: 50vh;
-  margin: 0;
-  padding: 0;
-  border: 0 none;
-  box-sizing: border-box;
+    display: block;
+    width: 100vw;
+    max-width: 100%;
+    height: 50vh;
+    margin: 0;
+    padding: 0;
+    border: 0 none;
+    box-sizing: border-box;
 }
-p,
-v-card-title,
-v-btn,
-h1,
-h2,
-h3,
-h4,
-h5 {
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* Internet Explorer */
-  -khtml-user-select: none; /* KHTML browsers (e.g. Konqueror) */
+p,v-card-title,v-btn,
+h1,h2,h3,h4,h5 {
+     -moz-user-select: none; /* Firefox */
+      -ms-user-select: none; /* Internet Explorer */
+   -khtml-user-select: none; /* KHTML browsers (e.g. Konqueror) */
   -webkit-user-select: none; /* Chrome, Safari, and Opera */
   -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
 }

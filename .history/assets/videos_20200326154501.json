@@ -62,12 +62,12 @@
       { "name": "Intro to Real World Vue", "src": "297369661" },
       { "name": "Creating our Project", "src": "277360353" },
       { "name": "Optimizing your Editor", "src": "279903602" },
-      { "name": "Vue Router Basics", "src": "297766252" },
-      { "name": "Dynamic Routing & History Mode", "src": "282973369" },
-      { "name": "Single File Vue Components", "src": "284521373" },
-      { "name": "Global Components", "src": "285671440" },
-      { "name": "Slots", "src": "286707518" },
-      { "name": "API calls with Axios", "src": "297804361" }
+      { "name": "", "src": "297766252" },
+      { "name": "", "src": "282973369" },
+      { "name": "", "src": "284521373" },
+      { "name": "", "src": "285671440" },
+      { "name": "", "src": "286707518" },
+      { "name": "", "src": "297804361" }
     ]
   },
   "mastering_vuex": {
