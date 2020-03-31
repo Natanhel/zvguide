@@ -1,4 +1,4 @@
-# zvguide
+# ZVGuide
 
 > My kickass Nuxt.js project
 
