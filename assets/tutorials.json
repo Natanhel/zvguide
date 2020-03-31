@@ -3,12 +3,12 @@
   "real_world_vue.js": {
     "excercise": "בנו אתר"
   },
-  "mastering_vuex": {},
+  "mastering_vuex": ["שמרו באמצעות Vuex את "],
   "next_level_vue": ["בנו אתר", "יפה"],
   "watch_us_build_a_trello_clone": {},
   "animating_vue": {},
   "unit_testing": {},
-  "token_based_authentication": {},
+  "token_based_authentication": ["בצעו אימות משתמשים לאפליקציית whatZapp"],
   "scaling_vue_with_nuxt.js": {},
   "beautify_with_vuetify": {},
   "component_design_patterns": {},

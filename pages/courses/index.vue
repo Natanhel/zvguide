@@ -78,12 +78,12 @@
                 :to="getName(child.Name)">
                   <h3>{{ child.Name }}</h3>
                 </v-card>
-              <v-divider/>
+              <!-- <v-divider/>
               <v-card flat
               :to="getTutorial(child.Name)"
               text>
                 <h5>Exercise</h5>
-              </v-card>
+              </v-card> -->
             </v-card>
           </v-container>
         </div>

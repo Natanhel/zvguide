@@ -1,5 +1,8 @@
 <template>
     <div>
+      <v-btn color="primary" to="/courses">
+        back
+      </v-btn>
         <h1>Exercise - {{ this.$route.params.id.split('_').join(' ') }}</h1>
         
         <v-layout
@@ -15,16 +18,13 @@
                 <v-card direction="rtl">
                     <v-card-title>תרגול</v-card-title>
                     <v-card-text>המשימה שלכם</v-card-text>
-                    <!-- <v-card-text
+                    <v-card-text
                     flat
                     v-for="(ex,index) in exs"
                     :key="index"
                     >
                     {{ex}}
                     </v-card-text>
-
-                    <v-btn color="primary">הבא</v-btn> -->
-                    
                 </v-card>
             </v-flex>
         </v-layout>
