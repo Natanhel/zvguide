@@ -153,7 +153,7 @@ export default {
       }
     },
     getName (name) {
-      return '/courses/' + name.split(' ').join('_')
+      return '/courses/' + name.split(' ').join('_').split('.')[0]
     },
     getTutorial (name) {
       return '/courses/exercise/' + name.split(' ').join('_')

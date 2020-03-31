@@ -1,5 +1,5 @@
 {
-  "intro_to_vue.js": {
+  "intro_to_vue": {
     "path": "Intro to Vue.js",
     "level": "Beginner",
     "links": [
@@ -52,7 +52,7 @@
       }
     ]
   },
-  "real_world_vue.js": {
+  "real_world_vue": {
     "path": "Real World Vue.js",
     "level": "Beginner",
     "links": [
@@ -318,7 +318,7 @@
       }
     ]
   },
-  "scaling_vue_with_nuxt.js": {
+  "scaling_vue_with_nuxt": {
     "path": "Scaling Vue with Nuxt.js",
     "level": "Intermediate",
     "links": [
