@@ -57,23 +57,33 @@
       </div>
     </transition>
     <transition name="courses" mode="out-in">
-      <div v-show="!welcomeCard">
+      <div v-if="!welcomeCard">
         <div v-for="(card,index) in items" :key="index">
           <h2>{{ card.Name }}</h2>
           <v-divider />
           <v-container row fluid style="justify-content: space-evenly;">
             <v-card
-              v-for="child in card.children"
-              :key="child.id"
+              v-for="(child,index) in card.children"
+              :key="index"
               class="lesson-card"
               align="center"
               justify="center"
               fill-height
               text
               :disabled="child.locked"
-              :to="getName(child.Name)"
             >
-              {{ child.Name }}
+              {{index+1}}
+              <br>
+                <v-card flat
+                :to="getName(child.Name)">
+                  <h3>{{ child.Name }}</h3>
+                </v-card>
+              <v-divider/>
+              <v-card flat
+              :to="getTutorial(child.Name)"
+              text>
+                <h5>Exercise</h5>
+              </v-card>
             </v-card>
           </v-container>
         </div>
@@ -132,7 +142,6 @@ export default {
     }
   },
   mounted () {
-    // console.log('mounted courses index')
     if (localStorage.correct_password === 'true') {
       this.welcomeCard = false
     }
@@ -145,6 +154,9 @@ export default {
     },
     getName (name) {
       return '/courses/' + name.split(' ').join('_')
+    },
+    getTutorial (name) {
+      return '/courses/exercise/' + name.split(' ').join('_')
     },
     staggerOn () {
       // Load bcrypt hash
@@ -188,8 +200,7 @@ export default {
 .lesson-card {
   padding: 1em;
   margin: 1em;
-  width: 10em;
-  height: 5em;
+  width: 20em;
 }
 
 .welcome-card {
@@ -215,7 +226,6 @@ export default {
 
 p,
 v-card-title,
-v-btn,
 h1,
 h2,
 h3,

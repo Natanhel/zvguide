@@ -1,0 +1,18 @@
+{
+  "intro_to_vue.js": [""],
+  "real_world_vue.js": {
+    "excercise": "בנו אתר"
+  },
+  "mastering_vuex": {},
+  "next_level_vue": ["בנו אתר", "יפה"],
+  "watch_us_build_a_trello_clone": {},
+  "animating_vue": {},
+  "unit_testing": {},
+  "token_based_authentication": {},
+  "scaling_vue_with_nuxt.js": {},
+  "beautify_with_vuetify": {},
+  "component_design_patterns": {},
+  "vue_3_essentials": {},
+  "vue_3_reactivity": {},
+  "advanced_components": {}
+}
