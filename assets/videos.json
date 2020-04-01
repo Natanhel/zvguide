@@ -422,8 +422,12 @@
         "src": "394725602"
       },
       {
-        "name": "Props Fundamentals",
+        "name": "Props: Fundamentals",
         "src": "394498766"
+      },
+      {
+        "name": "Props: Custom Validation",
+        "src": "399734836"
       }
     ]
   },
