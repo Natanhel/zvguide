@@ -1,14 +1,14 @@
 <template>
   <div>
     <h1>Extras</h1>
-    <v-card v-for="(track,name, index) in tracks" :key="index" class="trackName" text flat>
-      <v-row>
+    <v-card v-for="(track, name, index) in tracks" :key="index" class="trackName" text flat>
+      <v-row v-if="showTrack(track)">
         <!-- <v-card class="trackName" text flat> -->
         <!-- </v-card> -->
         <v-card-title>Track {{index+1}} - {{name}}</v-card-title>
       </v-row>
-      <v-row v-if="track !== '{}'">
-        <v-col v-for="(subTrack,name, j) in track" :key="j">
+      <v-row>
+        <v-col v-for="(subTrack, name, j) in track" :key="j">
           <v-card class="trackCard" align="center" justify="center">
             {{name}}
             <v-row cols="12">
@@ -40,6 +40,11 @@
 
 <script>
 export default {
+  methods: {
+    showTrack(track){
+      return JSON.stringify(track).length > 2
+    }
+  },
   data () {
     return {
       links: require('@/assets/extras.json'),
