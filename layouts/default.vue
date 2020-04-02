@@ -1,9 +1,6 @@
 <template>
   <v-app dark>
-    <v-dialog
-      v-model="aboutMe"
-      max-width="450"
-    >
+    <v-dialog v-model="aboutMe" max-width="450">
       <v-card>
         <v-card-title>About Me</v-card-title>
         <v-card-text>
@@ -30,13 +27,9 @@
           vault of information for future self
           <v-icon>mdi-emoticon-cool-outline</v-icon>
         </v-card-text>
-        <v-card-text>
-          (and for the sake of info-sharing as well)
-        </v-card-text>
+        <v-card-text>(and for the sake of info-sharing as well)</v-card-text>
         <v-card-action>
-          <v-btn class="closeBtn" color="primary" @click="aboutMe = !aboutMe">
-            close
-          </v-btn>
+          <v-btn class="closeBtn" color="primary" @click="aboutMe = !aboutMe">close</v-btn>
         </v-card-action>
       </v-card>
     </v-dialog>
@@ -45,16 +38,10 @@
       :mini-variant="miniVariant"
       :clipped="clipped"
       fixed
-      app
+      :app="showNav"
     >
       <v-list>
-        <v-list-item
-          v-for="(item, i) in items"
-          :key="i"
-          :to="item.to"
-          router
-          exact
-        >
+        <v-list-item v-for="(item, i) in items" :key="i" :to="item.to" router exact>
           <v-list-item-action>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-action>
@@ -64,12 +51,8 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar
-      :clipped-left="clipped"
-      fixed
-      app
-    >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+    <v-app-bar :clipped-left="clipped" fixed app>
+      <v-app-bar-nav-icon v-show="showNav" @click.stop="drawer = !drawer" />
       <v-toolbar-title v-text="title" />
       <v-spacer />
     </v-app-bar>
@@ -78,10 +61,7 @@
         <nuxt />
       </v-container>
     </v-content>
-    <v-footer
-      :fixed="fixed"
-      app
-    >
+    <v-footer :fixed="fixed" app>
       <span @click="aboutMe = !aboutMe">&copy; {{ new Date().getFullYear() }} - Natanhel Poliszuk</span>
     </v-footer>
   </v-app>
@@ -90,6 +70,11 @@
 <script>
 export default {
   name: 'Default',
+  computed: {
+    showNav () {
+      return this.$router.currentRoute.name.toLowerCase() !== 'extrasteams'
+    }
+  },
   data () {
     return {
       aboutMe: false,
