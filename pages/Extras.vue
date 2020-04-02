@@ -1,33 +1,6 @@
 <template>
   <div>
     <h1>Extras</h1>
-    <v-card v-for="(track, name, index) in tracks" :key="index" class="trackName" text flat>
-      <v-row v-if="showTrack(track)">
-        <!-- <v-card class="trackName" text flat> -->
-        <!-- </v-card> -->
-        <v-card-title>Track {{index+1}} - {{name}}</v-card-title>
-      </v-row>
-      <v-row>
-        <v-col v-for="(subTrack, name, j) in track" :key="j">
-          <v-card class="trackCard" align="center" justify="center">
-            {{name}}
-            <v-row cols="12">
-              <v-col lg="4" sm="3">
-                <v-img :src="subTrack.img" width="50px"></v-img>
-              </v-col>
-              <v-col lg="8" sm="9">
-                <a :href="subTrack.ref" target="_blank">{{ subTrack.name }}</a>
-
-                <div v-for="(link,i) in subTrack.links" :key="i">
-                  <a :href="link.ref" target="_blank">{{ link.name }}</a>
-                </div>
-              </v-col>
-            </v-row>
-          </v-card>
-        </v-col>
-      </v-row>
-    </v-card>
-    <h1>Even More</h1>
     <v-row>
       <v-col v-for="(link, index) in links" :key="index" cols="12" sm="6">
         <v-card class="linkCard">
@@ -40,37 +13,18 @@
 
 <script>
 export default {
-  methods: {
-    showTrack(track){
-      return JSON.stringify(track).length > 2
-    }
-  },
   data () {
     return {
-      links: require('@/assets/extras.json'),
-      tracks: require('@/assets/tracks.json')
+      links: require('@/assets/extras.json')
     }
   }
 }
 </script>
 
 <style>
-.linkCard,
-.trackCard {
+.linkCard {
   padding: 1em;
   margin: 0.5em;
-  margin: auto;
-}
-
-.trackCard {
-  width: 20em;
-  height: 8em;
-}
-
-.trackName {
-  padding: 1em;
-  margin: 0.5em;
-  background-color: transparent !important;
 }
 
 p,
