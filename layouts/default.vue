@@ -28,6 +28,7 @@
           <v-icon>mdi-emoticon-cool-outline</v-icon>
         </v-card-text>
         <v-card-text>(and for the sake of info-sharing as well)</v-card-text>
+        <v-card-text>{{joke}}</v-card-text>
         <v-card-action>
           <v-btn class="closeBtn" color="primary" @click="aboutMe = !aboutMe">close</v-btn>
         </v-card-action>
@@ -58,21 +59,45 @@
     </v-app-bar>
     <v-content>
       <v-container>
-        <nuxt />
+        <transition name="fade">
+          <nuxt />
+        </transition>
       </v-container>
     </v-content>
     <v-footer :fixed="fixed" app>
-      <span @click="aboutMe = !aboutMe">&copy; {{ new Date().getFullYear() }} - Natanhel Poliszuk</span>
+      <span @click="popUp">&copy; {{ new Date().getFullYear() }} - Natanhel Poliszuk</span>
     </v-footer>
   </v-app>
 </template>
 
 <script>
+import axios from "axios";
 export default {
+
   name: 'Default',
   computed: {
     showNav () {
       return this.$router.currentRoute.name.toLowerCase() !== 'extrasteams'
+    }
+  },
+  mounted() {
+    this.getJoke()
+  },
+  methods: {
+    popUp(){
+      this.getJoke()
+      this.aboutMe = !this.aboutMe
+    },
+    async getJoke(){
+      try {
+        var { request: {
+          response
+        } } = await axios.get('http://api.icndb.com/jokes/random?escape=javascript&limitTo=[nerdy]')
+        var { value: { joke } } = JSON.parse(response)
+        this.joke = joke
+      } catch (error) {
+        console.log(error.message)
+      }
     }
   },
   data () {
@@ -81,6 +106,7 @@ export default {
       clipped: false,
       drawer: false,
       fixed: false,
+      joke: '',
       items: [
         {
           icon: 'mdi-home',
@@ -112,7 +138,14 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-leave-active {
+  transition: opacity 0.5s ease-out;
+}
 .closeBtn {
   padding: 1em;
   margin: 1em;

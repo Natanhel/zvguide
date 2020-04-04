@@ -1,61 +1,45 @@
 <template>
   <v-layout column>
-    <transition name="fade" mode="out-in">
-      <div v-show="welcomeCard">
-        <v-flex class="text-center">
-          <img src="/v.png" alt="Vuetify.js" class="mb-5">
-          <blockquote class="blockquote">
-            &#8220;First, solve the problem. Then, write the code.&#8221;
-            <footer>
-              <small>
-                <em>&mdash;John Johnson</em>
-              </small>
-            </footer>
-          </blockquote>
-        </v-flex>
-        <v-flex>
-          <v-card class="welcome-card">
-            <p class="heb-welcome">
-              ברוכים הבאים לחפיפת Vue!
-            </p>
-            <p class="heb-welcome">
-              לפניכם שלוש רמות קושי: מתחיל, בינוני, מתקדם
-            </p>
-            <p class="heb-welcome">
-              לכל רמת קושי קיימים כמה קורסים
-            </p>
-            <p class="heb-welcome">
-              כל קורס אורך בין חצי שעה לשעה וחצי
-            </p>
-            <p class="heb-welcome">
-              כמו כן, לומדים הכי טוב אם מתרגלים ולכן, מומלץ בחום להוריד את הסביבה אליכם למחשב ולכתוב קוד
-            </p>
-            <p class="heb-welcome">
-              בהצלחה!
-            </p>
-            <p class="heb-welcome">
-              אם אתם מוצאים בעיה כלשהי בלינקים יש ליצור קשר עם נתנאל
-            </p>
-            <v-card width="30vw" flat>
-              <v-text-field
-                v-model="pwd"
-                type="password"
-                color="white"
-                outlined
-                dense
-                placeholder="הזן סיסמא כאן"
-                @keypress="enterWasPressed"
-              />
-              <v-btn
-                @click="staggerOn"
-              >
-                כנס
-              </v-btn>
-            </v-card>
+    <!-- <transition name="fade" mode="out-in"> -->
+    <div v-if="welcomeCard">
+      <v-flex class="text-center">
+        <img src="/v.png" alt="Vuetify.js" class="mb-5" />
+        <blockquote class="blockquote">
+          &#8220;First, solve the problem. Then, write the code.&#8221;
+          <footer>
+            <small>
+              <em>&mdash;John Johnson</em>
+            </small>
+          </footer>
+        </blockquote>
+      </v-flex>
+      <v-flex>
+        <v-card class="welcome-card">
+          <p class="heb-welcome">ברוכים הבאים לחפיפת Vue!</p>
+          <p class="heb-welcome">לפניכם שלוש רמות קושי: מתחיל, בינוני, מתקדם</p>
+          <p class="heb-welcome">לכל רמת קושי קיימים כמה קורסים</p>
+          <p class="heb-welcome">כל קורס אורך בין חצי שעה לשעה וחצי</p>
+          <p
+            class="heb-welcome"
+          >כמו כן, לומדים הכי טוב אם מתרגלים ולכן, מומלץ בחום להוריד את הסביבה אליכם למחשב ולכתוב קוד</p>
+          <p class="heb-welcome">בהצלחה!</p>
+          <p class="heb-welcome">אם אתם מוצאים בעיה כלשהי בלינקים יש ליצור קשר עם נתנאל</p>
+          <v-card width="30vw" flat>
+            <v-text-field
+              v-model="pwd"
+              type="password"
+              color="white"
+              outlined
+              dense
+              placeholder="הזן סיסמא כאן"
+              @keypress="enterWasPressed"
+            />
+            <v-btn @click="checkPWD">כנס</v-btn>
           </v-card>
-        </v-flex>
-      </div>
-    </transition>
+        </v-card>
+      </v-flex>
+    </div>
+    <!-- </transition> -->
     <transition name="courses" mode="out-in">
       <div v-if="!welcomeCard">
         <div v-for="(card,index) in items" :key="index">
@@ -73,17 +57,16 @@
               :disabled="child.locked"
             >
               {{index+1}}
-              <br>
-                <v-card flat
-                :to="getName(child.Name)">
-                  <h3>{{ child.Name }}</h3>
-                </v-card>
+              <br />
+              <v-card flat :to="getName(child.Name)">
+                <h3>{{ child.Name }}</h3>
+              </v-card>
               <!-- <v-divider/>
               <v-card flat
               :to="getTutorial(child.Name)"
               text>
                 <h5>Exercise</h5>
-              </v-card> -->
+              </v-card>-->
             </v-card>
           </v-container>
         </div>
@@ -95,6 +78,11 @@
 <script>
 import gsap from 'gsap'
 import bcrypt from 'bcryptjs'
+
+// Load bcrypt hash
+const hash = '$2y$12$6GlkOUy5fkAqY7HlJ3fcreSs93ehajrPf9D4wBgtkfLUP/Yh/rxvW'
+const hashCheck = '$2y$12$z4lGcLU4sC0VUPfa/T8OWOwI92Rcy01mNuQesYN.D8CPNUs1O7zje'
+
 export default {
   components: {
   },
@@ -142,14 +130,21 @@ export default {
     }
   },
   mounted () {
-    if (localStorage.correct_password === 'true') {
-      this.welcomeCard = false
+    try {
+      if (!localStorage[hashCheck]){
+        this.welcomeCard = false
+        this.staggerOn()
+      }
+      
+    } finally {
+      console.log('nope');
+      
     }
   },
   methods: {
     enterWasPressed (e) {
       if (e.keyCode === 13) {
-        this.staggerOn()
+        this.checkPWD()
       }
     },
     getName (name) {
@@ -159,12 +154,7 @@ export default {
       return '/courses/exercise/' + name.split(' ').join('_')
     },
     staggerOn () {
-      // Load bcrypt hash
-      const hash = '$2y$12$6GlkOUy5fkAqY7HlJ3fcreSs93ehajrPf9D4wBgtkfLUP/Yh/rxvW'
-      // eslint-disable-next-line handle-callback-err
-      if (!bcrypt.compareSync(this.pwd, hash)) { return }
-      this.welcomeCard = !this.welcomeCard
-      localStorage.correct_password = true
+      localStorage[hashCheck] = false
       setTimeout(() => {
       }, 1000)
       gsap.from('.lesson-card', {
@@ -175,6 +165,12 @@ export default {
         ease: 'power1',
         stagger: 0.1
       }, '<.5')
+    },
+    checkPWD() {
+      // eslint-disable-next-line handle-callback-err
+      if (!bcrypt.compareSync(this.pwd, hash)) { return }
+      this.welcomeCard = !this.welcomeCard
+      this.staggerOn()
     }
   },
   head () {
