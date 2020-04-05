@@ -131,7 +131,8 @@ export default {
   },
   mounted () {
     try {
-      if (!localStorage[hashCheck]){
+      var skipPwd = localStorage.getItem(hashCheck)
+      if (skipPwd === 'false'){
         this.welcomeCard = false
         this.staggerOn()
       }
