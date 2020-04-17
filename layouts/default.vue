@@ -28,6 +28,10 @@
           <v-icon>mdi-emoticon-cool-outline</v-icon>
         </v-card-text>
         <v-card-text>(and for the sake of info-sharing as well)</v-card-text>
+        <v-card-text>
+          <a rel="stylesheet" href="https://github.com/Natanhel" target="_blank">My GitHub page</a>
+        </v-card-text>
+        <v-card-text>Here's a nerdy chuck norris joke using Axios:</v-card-text>
         <v-card-text>{{joke}}</v-card-text>
         <v-card-action>
           <v-btn class="closeBtn" color="primary" @click="aboutMe = !aboutMe">close</v-btn>
@@ -92,7 +96,7 @@ export default {
       try {
         var { request: {
           response
-        } } = await axios.get('http://api.icndb.com/jokes/random?escape=javascript&limitTo=[nerdy]')
+        } } = await axios.get('https://api.icndb.com/jokes/random?escape=javascript&limitTo=[nerdy]')
         var { value: { joke } } = JSON.parse(response)
         this.joke = joke
       } catch (error) {
