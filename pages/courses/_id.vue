@@ -1,28 +1,19 @@
 <template>
   <div>
     <v-flex>
-      <v-btn color="primary" to="/courses">
-        back
-      </v-btn>
+      <v-btn color="primary" to="/courses">back</v-btn>
       <v-container row>
         <v-row align="center">
           <v-col class="text-center" cols="12" sm="8">
             <h1>{{ this.$route.params.id.split('_').join(' ') }}</h1>
-            <h2>
-              {{ activeName }}
-            </h2>
+            <h2>{{ activeName }}</h2>
             <checklist :videos="videos" />
-            <iframe
-              :src="src"
-              frameborder="0"
-              allow="autoplay; fullscreen"
-              allowfullscreen
-            />
+            <iframe :src="src" frameborder="0" allow="autoplay; fullscreen" allowfullscreen />
             <h4>Textual Help & Materials</h4>
             <div v-for="link in links" :key="link">
-              <a :href="link">
-                {{ link.split('/')[link.split('/').length-2].split('-').join(' ').split('vuemastery')[1] }}
-              </a>
+              <a
+                :href="link"
+              >{{ link.split('/')[link.split('/').length-2].split('-').join(' ').split('vuemastery')[1] }}</a>
             </div>
           </v-col>
           <v-col sm="4" xs="12" class="text-center">
@@ -52,8 +43,8 @@ export default {
   },
   data () {
     return {
-      activeName: 'Vue Instance',
-      src: 'https://player.vimeo.com/video/398745560',
+      activeName: '',
+      src: '',
       links: [],
       videos: []
     }
@@ -84,9 +75,7 @@ export default {
 
         try {
           dataTransform.watched = (localStorage[parsed] === 'true')
-          // console.log('updated ' + parsed + ' to ' + localStorage[parsed])
         } catch (error) {
-          // console.log('no data in localStorage for ' + error.message)
           localStorage[parsed] = false
         }
 
@@ -122,24 +111,12 @@ export default {
 </script>
 
 <style>
-.video-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-}
-
 .lessons {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   align-content: center;
-}
-body {
-  margin: 0;
-  padding: 0;
 }
 
 iframe {
@@ -152,18 +129,5 @@ iframe {
   border: 0 none;
   box-sizing: border-box;
 }
-p,
-v-card-title,
-v-btn,
-h1,
-h2,
-h3,
-h4,
-h5 {
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* Internet Explorer */
-  -khtml-user-select: none; /* KHTML browsers (e.g. Konqueror) */
-  -webkit-user-select: none; /* Chrome, Safari, and Opera */
-  -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
-}
+
 </style>

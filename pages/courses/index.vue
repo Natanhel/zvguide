@@ -39,44 +39,11 @@
         </v-card>
       </v-flex>
     </div>
-    <!-- </transition> -->
-    <transition name="courses" mode="out-in">
-      <div v-if="!welcomeCard">
-        <div v-for="(card,index) in items" :key="index">
-          <h2>{{ card.Name }}</h2>
-          <v-divider />
-          <v-container row fluid style="justify-content: space-evenly;">
-            <v-card
-              v-for="(child,index) in card.children"
-              :key="index"
-              class="lesson-card"
-              align="center"
-              justify="center"
-              fill-height
-              text
-              :disabled="child.locked"
-            >
-              {{index+1}}
-              <br />
-              <v-card flat :to="getName(child.Name)">
-                <h3>{{ child.Name }}</h3>
-              </v-card>
-              <!-- <v-divider/>
-              <v-card flat
-              :to="getTutorial(child.Name)"
-              text>
-                <h5>Exercise</h5>
-              </v-card>-->
-            </v-card>
-          </v-container>
-        </div>
-      </div>
-    </transition>
+    <courses-list v-if="!welcomeCard" :items="items"/>
   </v-layout>
 </template>
 
 <script>
-import gsap from 'gsap'
 import bcrypt from 'bcryptjs'
 
 // Load bcrypt hash
@@ -85,6 +52,7 @@ const hashCheck = '$2y$12$z4lGcLU4sC0VUPfa/T8OWOwI92Rcy01mNuQesYN.D8CPNUs1O7zje'
 
 export default {
   components: {
+    CoursesList: () => import(/* webpackPrefetch: true */ '@/components/CoursesList')
   },
   data () {
     return {
@@ -134,7 +102,7 @@ export default {
       var skipPwd = localStorage.getItem(hashCheck)
       if (skipPwd === 'false'){
         this.welcomeCard = false
-        this.staggerOn()
+        localStorage[hashCheck] = false
       }
       
     } finally {
@@ -148,30 +116,14 @@ export default {
         this.checkPWD()
       }
     },
-    getName (name) {
-      return '/courses/' + name.split(' ').join('_').split('.')[0]
-    },
     getTutorial (name) {
       return '/courses/exercise/' + name.split(' ').join('_')
-    },
-    staggerOn () {
-      localStorage[hashCheck] = false
-      setTimeout(() => {
-      }, 1000)
-      gsap.from('.lesson-card', {
-        duration: 0.5,
-        opacity: 0,
-        scale: 0,
-        y: 200,
-        ease: 'power1',
-        stagger: 0.1
-      }, '<.5')
     },
     checkPWD() {
       // eslint-disable-next-line handle-callback-err
       if (!bcrypt.compareSync(this.pwd, hash)) { return }
-      this.welcomeCard = !this.welcomeCard
-      this.staggerOn()
+      this.welcomeCard = !this.welcomeCard      
+      localStorage[hashCheck] = false
     }
   },
   head () {
@@ -190,48 +142,7 @@ export default {
   direction: rtl;
 }
 
-.v-treeview {
-  direction: rtl;
-}
-
-.lesson-card {
-  padding: 1em;
-  margin: 1em;
-  width: 20em;
-}
-
 .welcome-card {
   padding: 1em;
-}
-
-.fade-leave-to,
-.courses-enter {
-  opacity: 0;
-}
-
-.fade-leave-active,
-.courses-enter-active {
-  transition: opacity 0.5s ease-out;
-}
-
-.level {
-  padding: 1em;
-  width: 100%;
-  margin: 1em;
-  direction: rtl;
-}
-
-p,
-v-card-title,
-h1,
-h2,
-h3,
-h4,
-h5 {
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* Internet Explorer */
-  -khtml-user-select: none; /* KHTML browsers (e.g. Konqueror) */
-  -webkit-user-select: none; /* Chrome, Safari, and Opera */
-  -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
 }
 </style>
