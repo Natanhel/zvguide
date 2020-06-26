@@ -554,5 +554,72 @@
         "src": "276302877"
       }
     ]
+  },
+  "vue_3_deep_dive_with_evan_you":{
+    "path": "Vue 3 Deep Dive with Evan You",
+    "level": "Advanced",
+    "data": [
+      
+      {
+        "name" : "Vue 3 Overview",
+        "src": "413320671"
+      },
+      {
+        "name" : "Virtual DOM & Render Functions",
+        "src": "413172106"
+      },
+      {
+        "name" : "How to use Render Functions",
+        "src": "410406205"
+      },
+      {
+        "name" : "Compiler & Renderer API",
+        "src": "410199064"
+      },
+      {
+        "name" : "Creating a Mount function",
+        "src": "410256224"
+      },
+      {
+        "name" : "Creating a Patch function",
+        "src": "410291443"
+      },
+      {
+        "name" : "Intro to Reactivity",
+        "src": "410676185"
+      },
+      {
+        "name" : "Building Reactivity from Scratch",
+        "src": "410680764"
+      },
+      {
+        "name" : "Building the Reactive API",
+        "src": "410687425"
+      },
+      {
+        "name" : "Creating a Mini Vue",
+        "src": "410711530"
+      },
+      {
+        "name" : "The Composition API",
+        "src": "410715243"
+      },
+      {
+        "name" : "Code Organization",
+        "src": "410722048"
+      },
+      {
+        "name" : "Logic Reuse",
+        "src": "411046002"
+      },
+      {
+        "name" : "Composition API Example",
+        "src": "411053073"
+      },
+      {
+        "name" : "Parting Words",
+        "src": "411057133"
+      }
+    ]
   }
 }

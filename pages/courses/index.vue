@@ -91,7 +91,8 @@ export default {
             { id: 14, Name: 'Component Design Patterns' },
             { id: 15, Name: 'Vue 3 Essentials' },
             { id: 16, Name: 'Vue 3 Reactivity' },
-            { id: 17, Name: 'Advanced Components' }
+            { id: 17, Name: 'Advanced Components' },
+            { id: 17, Name: 'Vue 3 Deep Dive with Evan You' }
           ]
         }
       ]

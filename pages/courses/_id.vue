@@ -9,7 +9,7 @@
             <h2>{{ activeName }}</h2>
             <checklist :videos="videos" />
             <iframe :src="src" frameborder="0" allow="autoplay; fullscreen" allowfullscreen />
-            <h4>Textual Help & Materials</h4>
+            <h4 v-if="typeof links !== 'undefined' && links.length > 0">Textual Help & Materials</h4>
             <div v-for="link in links" :key="link">
               <a
                 :href="link"
