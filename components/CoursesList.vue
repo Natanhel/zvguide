@@ -14,17 +14,11 @@
                 text
                 :disabled="child.locked"
                 >
-                {{index+1}}
-                <br />
-                <v-card flat :to="getName(child.Name)">
-                    <h3>{{ child.Name }}</h3>
-                </v-card>
-                <!-- <v-divider/>
-                <v-card flat
-                :to="getTutorial(child.Name)"
-                text>
-                    <h5>Exercise</h5>
-                </v-card>-->
+                    {{index+1}}
+                    <br />
+                    <v-card flat :to="getName(child.Name)">
+                        <h3>{{ child.Name }}</h3>
+                    </v-card>
                 </v-card>
             </v-container>
         </div>
@@ -66,6 +60,10 @@ export default {
   padding: 1em;
   margin: 1em;
   width: 20em;
+}
+
+.lesson-card:hover{
+    transform: scale(1.1) !important;
 }
 
 .courses-enter {
