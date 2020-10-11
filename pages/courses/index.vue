@@ -92,7 +92,8 @@ export default {
             { id: 15, Name: 'Vue 3 Essentials' },
             { id: 16, Name: 'Vue 3 Reactivity' },
             { id: 17, Name: 'Advanced Components' },
-            { id: 17, Name: 'Vue 3 Deep Dive with Evan You' }
+            { id: 17, Name: 'Vue 3 Deep Dive with Evan You' },
+            { id: 18, Name: 'From Vue 2 to Vue 3' }
           ]
         }
       ]
@@ -107,8 +108,7 @@ export default {
       }
       
     } finally {
-      console.log('nope');
-      
+      // console.log('nope');      
     }
   },
   methods: {

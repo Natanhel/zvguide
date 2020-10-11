@@ -621,5 +621,35 @@
         "src": "411057133"
       }
     ]
+  },
+  "from_vue_2_to_vue_3":{    
+    "path": "From Vue 2 to Vue 3",
+    "level": "Advanced",
+    "data": [
+      {
+        "name": "From Vue 2 to Vue 3",
+        "src": "424215562"
+      },
+      {
+        "name": "The new v-model",
+        "src": "425339512"
+      },
+      {
+        "name": "Multi v-model bindings",
+        "src": "427585737"
+      },
+      {
+        "name": "v-model modifiers",
+        "src": "433041737"
+      },
+      {
+        "name": "The New $attrs",
+        "src": "438959871"
+      },
+      {
+        "name": "Multi root components",
+        "src": "442885410"
+        }
+    ]
   }
 }
