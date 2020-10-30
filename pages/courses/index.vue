@@ -146,4 +146,5 @@ export default {
 .welcome-card {
   padding: 1em;
 }
+
 </style>

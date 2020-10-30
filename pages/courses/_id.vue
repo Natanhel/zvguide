@@ -2,35 +2,40 @@
   <div>
     <v-flex>
       <v-btn color="primary" to="/courses">back</v-btn>
-      <v-container row>
-        <v-row align="center">
-          <v-col class="text-center" cols="12" sm="8">
+      <div class="video-grid">
+          <div class="video-header">
             <h1>{{ this.$route.params.id.split('_').join(' ') }}</h1>
             <h2>{{ activeName }}</h2>
             <checklist :videos="videos" />
-            <iframe :src="src" frameborder="0" allow="autoplay; fullscreen" allowfullscreen />
-            <h4 v-if="typeof links !== 'undefined' && links.length > 0">Textual Help & Materials</h4>
+          </div>
+          <div class='empty-area'></div>
+
+          <div class='video-container'>
+            <iframe :src="src" frameborder="0" allow="autoplay; fullscreen" allowfullscreen />            
+          </div>
+
+          <div v-if="typeof links !== 'undefined' && links.length > 0" class='video-links'>
+            <h4 >Textual Help & Materials</h4>
             <div v-for="link in links" :key="link">
               <a
                 :href="link"
               >{{ link.split('/')[link.split('/').length-2].split('-').join(' ').split('vuemastery')[1] }}</a>
             </div>
-          </v-col>
-          <v-col sm="4" xs="12" class="text-center">
-            <v-card
-              v-for="v in videos"
-              :key="v.name"
-              xs="12"
-              sm="4"
-              height="2em"
-              class="lessons"
-              @click="play(v)"
-            >
-              <h5>{{ v.name }}</h5>
-            </v-card>
-          </v-col>
-        </v-row>
-      </v-container>
+          </div>
+        <div class="course-list-container">
+          <v-card
+            v-for="v in videos"
+            :key="v.name"
+            xs="12"
+            sm="4"
+            height="2em"
+            class="lessons"
+            @click="play(v)"
+          >
+            <h5>{{ v.name }}</h5>
+          </v-card>
+        </div>
+      </div>
     </v-flex>
   </div>
 </template>
@@ -117,17 +122,77 @@ export default {
   align-items: center;
   justify-content: center;
   align-content: center;
+  width: 100%;
 }
 
 iframe {
   display: block;
   width: 100vw;
   max-width: 100%;
-  height: 50vh;
+  height: 60vh;
   margin: 0;
   padding: 0;
   border: 0 none;
   box-sizing: border-box;
+}
+
+.video-header{
+  grid-area: video-header;  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.video-container{
+  grid-area: video-container;
+  height: 100%; width: 100%;
+}
+
+.video-links{
+  grid-area: video-links;  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.course-list-container{
+  grid-area: course-list-container;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.video-grid{
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-areas:  'video-header video-header video-header'
+                        'video-container video-container course-list-container'
+                        'video-container video-container course-list-container'
+                        'video-links video-links video-links';
+}
+
+.empty-area{
+  grid-area: empty-area;
+  width: 100%;
+}
+
+@media screen and (max-width: 980px){
+  .video-grid{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-areas:  'video-header video-header video-header'
+                          'video-container video-container video-container'
+                          'video-links video-links video-links'
+                          'course-list-container course-list-container course-list-container';
+  }
+
+  .video-links{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 </style>
