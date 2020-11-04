@@ -99,12 +99,12 @@
         "src": "297215375"
       },
       {
-        "name": "Notifications",
-        "src": "296095457"
-      },
-      {
         "name": "Vuex Modules",
         "src": "294957628"
+      },
+      {
+        "name": "Success & Error Notifications",
+        "src": "296095457"
       }
     ]
   },
