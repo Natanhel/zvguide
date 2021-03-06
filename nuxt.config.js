@@ -2,6 +2,10 @@ import colors from "vuetify/es5/util/colors";
 
 export default {
   mode: "universal",
+  
+  env: {
+    HASHED_PASS: '$2a$10$DXUgf/bl8dHgCfeEEPhOD.E/CDz/5OwXxQ114X5LViNj6obb2jIEC'
+  },
   /*
    ** Headers of the page
    */

@@ -34,6 +34,7 @@
               placeholder="הזן סיסמא כאן"
               @keypress="enterWasPressed"
             />
+            <p class="get-pass">כדי לקבל סיסמא יש ליצור קשר במייל natanhelp@gmail.com עם הכותרת VueARMYGuide</p>
             <v-btn @click="checkPWD">כנס</v-btn>
           </v-card>
         </v-card>
@@ -46,9 +47,8 @@
 <script>
 import bcrypt from 'bcryptjs'
 
-// Load bcrypt hash
-const hash = '$2y$12$6GlkOUy5fkAqY7HlJ3fcreSs93ehajrPf9D4wBgtkfLUP/Yh/rxvW'
-const hashCheck = '$2y$12$z4lGcLU4sC0VUPfa/T8OWOwI92Rcy01mNuQesYN.D8CPNUs1O7zje'
+// // Load bcrypt hash
+const hashCheck = '$2a$10$DXUgf/bl8dHgCfeEEPhOD.E/CDz/5OwXxQ114X5LViNj6obb2jIEC'
 
 export default {
   components: {
@@ -93,23 +93,24 @@ export default {
             { id: 16, Name: 'Vue 3 Reactivity' },
             { id: 17, Name: 'Advanced Components' },
             { id: 17, Name: 'Vue 3 Deep Dive with Evan You' },
-            { id: 18, Name: 'From Vue 2 to Vue 3' }
+            { id: 18, Name: 'From Vue 2 to Vue 3' },
+            { id: 19, Name: 'Vue 3 + Typescript' }
           ]
         }
       ]
     }
   },
   mounted () {
-    try {
+    // try {
       var skipPwd = localStorage.getItem(hashCheck)
       if (skipPwd === 'false'){
         this.welcomeCard = false
         localStorage[hashCheck] = false
       }
       
-    } finally {
+    // } finally {
       // console.log('nope');      
-    }
+    // }
   },
   methods: {
     enterWasPressed (e) {
@@ -122,7 +123,7 @@ export default {
     },
     checkPWD() {
       // eslint-disable-next-line handle-callback-err
-      if (!bcrypt.compareSync(this.pwd, hash)) { return }
+      if (!bcrypt.compareSync(this.pwd, process.env.HASHED_PASS)) { return }
       this.welcomeCard = !this.welcomeCard      
       localStorage[hashCheck] = false
     }
@@ -147,4 +148,8 @@ export default {
   padding: 1em;
 }
 
+.get-pass {
+  font-size: 0.75rem; 
+  direction: rtl;
+}
 </style>

@@ -651,5 +651,47 @@
         "src": "442885410"
         }
     ]
+  },
+  "vue_3_+_typescript":{    
+    "path": "Vue 3 + Typescript",
+    "level": "Advanced",
+    "data": [
+      {
+        "name": "Why Vue & TypeScript",
+        "src": "467481375"
+      },
+      {
+        "name": "Setting Up Vue 3 & TypeScript",
+        "src": "473662632"
+      },
+      {
+        "name": "Creating Components with TypeScript",
+        "src": "473998588"
+      },
+      {
+        "name": "Type Fundamentals",
+        "src": "486226307"
+      },
+      {
+        "name": "Defining Custom Types",
+        "src": "492858617"
+      },
+      {
+        "name": "Data with Custom Types",
+        "src": "501230219"
+      },
+      {
+        "name": "Props with Types",
+        "src": "505794251"
+      },
+      {
+        "name": "Computed & Methods with Custom Types",
+        "src": "510916818"
+      },
+      {
+        "name": "Next Steps",
+        "src": "516377523"
+      }
+    ]
   }
 }
