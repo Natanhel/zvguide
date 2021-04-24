@@ -76,10 +76,10 @@
 
 <script>
 import axios from "axios";
-function interopDefault (promise) {
-  return promise.then(m => m.default || m)
-}
-const moesif = () => interopDefault(import('moesif-browser-js'))
+// function interopDefault (promise) {
+//   return promise.then(m => m.default || m)
+// }
+// const moesif = () => interopDefault(import('moesif-browser-js'))
 export default {
 
   name: 'Default',
@@ -95,19 +95,19 @@ export default {
   methods: {
     moseifUserLoadedPage(){
       
-    const host = window.location.host.split(':')[0]
-    if (!host.includes('localhost')) {
-      moesif.init({
-        applicationId: process.env.moesifAppId
-      })
-      this.$axios('https://www.cloudflare.com/cdn-cgi/trace')
-        .then(({ data }) => {
-          moesif.track('First page load', {
-            userIP: data.split('\n').filter(e => new RegExp(/ip=[0-9]+.[0-9]+.[0-9]+.[0-9]+/).test(e))[0].split('=')[1],
-            host
-          })
-        })
-      }
+    // const host = window.location.host.split(':')[0]
+    // if (host.includes('localhost')) {
+    //   moesif.init({
+    //     applicationId: process.env.moesifAppId
+    //   })
+    //   this.$axios('https://www.cloudflare.com/cdn-cgi/trace')
+    //     .then(({ data }) => {
+    //       moesif.track('First page load', {
+    //         userIP: data.split('\n').filter(e => new RegExp(/ip=[0-9]+.[0-9]+.[0-9]+.[0-9]+/).test(e))[0].split('=')[1],
+    //         host
+    //       })
+    //     })
+    //   }
     },
     popUp(){
       this.getJoke()

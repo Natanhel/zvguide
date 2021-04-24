@@ -78,7 +78,7 @@ export default {
           src: `https://player.vimeo.com/video/${e.src}`
         }
 
-        this.sendMoseifEvent('Watching Video',{
+        this.sendMoesifEvent('Watching Video',{
           video_src: e.src,
           video_link: dataTransform.src,
           video_name: newName

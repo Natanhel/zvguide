@@ -22,6 +22,7 @@ export default {
         content: process.env.npm_package_description || "",
       },
     ],
+    scripts: [{src: "//unpkg.com/moesif-browser-js@v1/moesif.min.js"}],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
   },
   /*

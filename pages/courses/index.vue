@@ -53,6 +53,11 @@ import bcrypt from 'bcryptjs'
 
 // // Load bcrypt hash
 const hashCheck = '$2a$10$DXUgf/bl8dHgCfeEEPhOD.E/CDz/5OwXxQ114X5LViNj6obb2jIEC'
+// function interopDefault (promise) {
+//     return promise.then(m => m.default || m)
+//   }
+  
+// const moesif = () => interopDefault(import('moesif-browser-js'))
 
 export default {
   components: {
@@ -110,10 +115,10 @@ export default {
   },
   methods: {
     changeFilterFunction(func){
-      this.sendMoseifEvent('Used Filter', {
-        filtered: func
-      })
       this.filterFunc = func
+      // this.sendMoesifEvent('Used Filter', {
+      //   filtered: func
+      // })
     },
     createFilterFunctions(){
       this.filters = this.filters.map(fName => {

@@ -5,11 +5,11 @@ function interopDefault (promise) {
   
 const moesif = () => interopDefault(import('moesif-browser-js'))
 
-export default {
+const mixin = {
     mounted() {
     },
     methods: {
-        sendMoseifEvent(str, obj){            
+        sendMoesifEvent(str, obj){            
             if (process.client) {
                 moesif.init({
                 applicationId: process.env.moesifAppId
@@ -18,4 +18,13 @@ export default {
             }
         }
     }
+}
+
+import Vue from "vue"
+
+// Make sure to pick a unique name for the flag
+// so it won't conflict with any other mixin.
+if (!Vue.__my_mixin__) {
+  Vue.__my_mixin__ = true
+  Vue.mixin(mixin) // Set up your mixin then
 }
