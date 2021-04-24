@@ -75,8 +75,14 @@ export default {
           name: newName,
           parsedName: parsed,
           watched: false,
-          src: 'https://player.vimeo.com/video/' + e.src
+          src: `https://player.vimeo.com/video/${e.src}`
         }
+
+        this.sendMoseifEvent('Watching Video',{
+          video_src: e.src,
+          video_link: dataTransform.src,
+          video_name: newName
+        })
 
         try {
           dataTransform.watched = (localStorage[parsed] === 'true')

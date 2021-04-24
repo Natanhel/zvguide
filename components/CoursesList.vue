@@ -1,8 +1,8 @@
 <template>
     <div>            
         <div v-for="(card,index) in items" :key="index">
-        <h2>{{ card.Name }}</h2>
-        <v-divider />
+            <h2>{{ card.Name }}</h2>
+            <v-divider />
             <v-container row fluid style="justify-content: space-evenly;">
                 <v-card
                 v-for="(child,index) in card.children"
@@ -14,10 +14,11 @@
                 text
                 :disabled="child.locked"
                 >
-                    {{index+1}}
-                    <br />
+                    <!-- {{index+1}} -->
+                    <!-- <br /> -->
                     <v-card flat :to="getName(child.Name)">
                         <h3>{{ child.Name }}</h3>
+                        <h5>Lessons: {{child.VideosNumber}}</h5>
                     </v-card>
                 </v-card>
             </v-container>
@@ -27,7 +28,7 @@
 
 <script>
 
-import gsap from 'gsap'
+// import gsap from 'gsap'
 export default {
     props: {
         items: {
@@ -36,16 +37,14 @@ export default {
         },
     },
     mounted() {
-        setTimeout(() => {
-        }, 1000)
-        gsap.from('.lesson-card', {
-        duration: 0.5,
-        opacity: 0,
-        scale: 0,
-        y: 200,
-        ease: 'power1',
-        stagger: 0.1
-        }, '<.5')
+        // gsap.from('.lesson-card', {
+        // duration: 0.5,
+        // opacity: 0,
+        // scale: 0,
+        // y: 200,
+        // ease: 'power1',
+        // stagger: 0.1
+        // }, '<.5')
     },
     methods: {
         getName(name){
@@ -60,10 +59,12 @@ export default {
   padding: 1em;
   margin: 1em;
   width: 20em;
+  transition: .3s all ;
 }
 
 .lesson-card:hover{
     transform: scale(1.1) !important;
+    transition: .3s all ;
 }
 
 .courses-enter {

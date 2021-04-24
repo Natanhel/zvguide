@@ -61,13 +61,13 @@
       <v-toolbar-title v-text="title" />
       <v-spacer />
     </v-app-bar>
-    <v-content>
+    <v-main>
       <v-container>
         <transition name="fade">
           <nuxt />
         </transition>
       </v-container>
-    </v-content>
+    </v-main>
     <v-footer :fixed="fixed" app>
       <span @click="popUp">&copy; {{ new Date().getFullYear() }} - Natanhel Poliszuk</span>
     </v-footer>
@@ -76,6 +76,10 @@
 
 <script>
 import axios from "axios";
+function interopDefault (promise) {
+  return promise.then(m => m.default || m)
+}
+const moesif = () => interopDefault(import('moesif-browser-js'))
 export default {
 
   name: 'Default',
@@ -86,8 +90,25 @@ export default {
   },
   mounted() {
     this.getJoke()
+    this.moseifUserLoadedPage()
   },
   methods: {
+    moseifUserLoadedPage(){
+      
+    const host = window.location.host.split(':')[0]
+    if (!host.includes('localhost')) {
+      moesif.init({
+        applicationId: process.env.moesifAppId
+      })
+      this.$axios('https://www.cloudflare.com/cdn-cgi/trace')
+        .then(({ data }) => {
+          moesif.track('First page load', {
+            userIP: data.split('\n').filter(e => new RegExp(/ip=[0-9]+.[0-9]+.[0-9]+.[0-9]+/).test(e))[0].split('=')[1],
+            host
+          })
+        })
+      }
+    },
     popUp(){
       this.getJoke()
       this.aboutMe = !this.aboutMe

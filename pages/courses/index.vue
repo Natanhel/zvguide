@@ -40,7 +40,11 @@
         </v-card>
       </v-flex>
     </div>
-    <courses-list v-if="!welcomeCard" :items="items"/>
+    
+    <div v-if="!welcomeCard" class="filter-containr">
+      <div class="filter-button" v-for="f in filters" :key="f.filterText" @click="changeFilterFunction(f.function)">{{f.text}}</div>
+    </div>
+    <courses-list v-if="!welcomeCard" :items="courses"/>
   </v-layout>
 </template>
 
@@ -58,61 +62,81 @@ export default {
     return {
       pwd: '',
       welcomeCard: true,
-      items: [
-        {
-          id: 1,
-          Name: 'Beginner',
-          header: true,
-          children: [
-            { id: 2, Name: 'Intro to Vue.js' },
-            { id: 3, Name: 'Real World Vue.js' },
-            { id: 4, Name: 'Mastering Vuex' },
-            { id: 5, Name: 'Next Level Vue' },
-            { id: 6, Name: 'Watch Us Build a Trello Clone' }
-          ]
-        },
-        {
-          id: 7,
-          Name: 'Intermediate',
-          header: true,
-          children: [
-            { id: 8, Name: 'Animating Vue' },
-            { id: 9, Name: 'Unit Testing' },
-            { id: 10, Name: 'Token Based Authentication' },
-            { id: 11, Name: 'Scaling Vue with Nuxt.js' },
-            { id: 12, Name: 'Beautify with Vuetify' }
-          ]
-        },
-        {
-          id: 13,
-          Name: 'Advanced',
-          header: true,
-          children: [
-            { id: 14, Name: 'Component Design Patterns' },
-            { id: 15, Name: 'Vue 3 Essentials' },
-            { id: 16, Name: 'Vue 3 Reactivity' },
-            { id: 17, Name: 'Advanced Components' },
-            { id: 17, Name: 'Vue 3 Deep Dive with Evan You' },
-            { id: 18, Name: 'From Vue 2 to Vue 3' },
-            { id: 19, Name: 'Vue 3 + Typescript' }
-          ]
-        }
+      idGenerator: 1,
+      videos: require('assets/videos.json'),
+      filterFunc: e => e,
+      filters: [
+          'All Courses',
+          'Beginner',
+          'Intermediate',
+          'Advanced',
+          'Vue 3'        
       ]
     }
   },
+  computed: {
+    courses () {
+      let categories = [
+          'Beginner',
+         'Intermediate',
+         'Advanced'
+      ]
+      return categories.map((levelName) => {   
+        const level = {     
+          header: true,
+          children: [],
+          Name: levelName
+        }
+        Object.keys(this.videos).forEach(v => {
+          const videoObject = this.videos[v]
+          if(videoObject.level === level.Name)
+            level.children.push({
+              Name: videoObject.path,
+              VideosNumber: videoObject.data.length
+            })
+        })
+        return level
+      })
+      .filter(this.filterFunc)
+    }
+  },
   mounted () {
-    // try {
+    this.createFilterFunctions()
       var skipPwd = localStorage.getItem(hashCheck)
       if (skipPwd === 'false'){
         this.welcomeCard = false
         localStorage[hashCheck] = false
       }
-      
-    // } finally {
-      // console.log('nope');      
-    // }
   },
   methods: {
+    changeFilterFunction(func){
+      this.sendMoseifEvent('Used Filter', {
+        filtered: func
+      })
+      this.filterFunc = func
+    },
+    createFilterFunctions(){
+      this.filters = this.filters.map(fName => {
+        if (fName === 'All Courses') 
+          return {
+            text: fName,
+            function: c => c
+          }
+        if(fName === 'Vue 3') {
+          return {
+            text: fName,
+            function: c => {
+              c.children = c.children.filter(child => child.Name.toUpperCase().includes(fName.toUpperCase()))
+              return c.children.length > 0
+            }
+          }
+        }
+        return {
+          text: fName,
+          function: c => c.Name === fName
+        }
+      })
+    },
     enterWasPressed (e) {
       if (e.keyCode === 13) {
         this.checkPWD()
@@ -151,5 +175,37 @@ export default {
 .get-pass {
   font-size: 0.75rem; 
   direction: rtl;
+}
+
+.filter-containr{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem;
+}
+
+.filter-button {
+  
+
+  /* --mint-cream: #f1fffaff;
+  --tea-green: #ccfccbff;
+  --celadon: #96e6b3ff;
+  --middle-green: #568259ff;
+  --ebony: #464e47ff;  */
+
+  margin: 0.5rem;
+  cursor: pointer;
+  background: #f1fffaff;
+  color:  #464e47ff;
+  font-weight: bold;
+  padding: 0.75rem;
+  border-radius: 50px;
+  transition: .1s all;
+}
+
+.filter-button:hover{
+  transform: scale(1.2);
+  transition: .3s all;
 }
 </style>

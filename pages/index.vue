@@ -95,4 +95,13 @@ h1,h2,h3,h4,h5 {
   -webkit-user-select: none; /* Chrome, Safari, and Opera */
   -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
 }
+* {
+  --mint-cream: #f1fffaff;
+  --tea-green: #ccfccbff;
+  --celadon: #96e6b3ff;
+  --middle-green: #568259ff;
+  --ebony: #464e47ff; 
+
+  /* background-color: var(--middle-green); */
+}
 </style>
