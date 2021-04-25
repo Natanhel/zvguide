@@ -42,7 +42,7 @@
     </div>
     
     <div v-if="!welcomeCard" class="filter-containr">
-      <div class="filter-button" v-for="f in filters" :key="f.filterText" @click="changeFilterFunction(f.function)">{{f.text}}</div>
+      <div class="filter-button" v-for="f in filters" :key="f.filterText" @click="changeFilterFunction(f.function, f.filterText)">{{f.text}}</div>
     </div>
     <courses-list v-if="!welcomeCard" :items="courses"/>
   </v-layout>
@@ -114,9 +114,9 @@ export default {
       }
   },
   methods: {
-    changeFilterFunction(func){
+    changeFilterFunction(func, filterName){
       this.filterFunc = func
-      this.sendMoesifEvent(`Used Filter - ${func}`,{})
+      this.sendMoesifEvent(`Used Filter - ${filterName}`,{})
     },
     createFilterFunctions(){
       this.filters = this.filters.map(fName => {
