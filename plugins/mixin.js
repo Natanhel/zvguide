@@ -1,16 +1,9 @@
-
-function interopDefault (promise) {
-    return promise.then(m => m.default || m)
-  }
-  
-const moesif = () => interopDefault(import('moesif-browser-js'))
-
 const mixin = {
-    mounted() {
-    },
     methods: {
-        sendMoesifEvent(str, obj){            
-            if (process.client) {
+        sendMoesifEvent(str, obj){   
+            const host = window.location.host.split(':')[0]
+            if (!host.includes('localhost') && process.client) {
+                const moesif = require('moesif-browser-js')
                 moesif.init({
                 applicationId: process.env.moesifAppId
                 })

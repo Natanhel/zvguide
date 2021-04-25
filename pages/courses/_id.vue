@@ -4,7 +4,7 @@
       <v-btn color="primary" to="/courses">back</v-btn>
       <div class="video-grid">
           <div class="video-header">
-            <h1>{{ this.$route.params.id.split('_').join(' ') }}</h1>
+            <h1>{{ $route.params.id.split('_').join(' ') }}</h1>
             <h2>{{ activeName }}</h2>
             <checklist :videos="videos" />
           </div>
@@ -78,12 +78,6 @@ export default {
           src: `https://player.vimeo.com/video/${e.src}`
         }
 
-        this.sendMoesifEvent('Watching Video',{
-          video_src: e.src,
-          video_link: dataTransform.src,
-          video_name: newName
-        })
-
         try {
           dataTransform.watched = (localStorage[parsed] === 'true')
         } catch (error) {
@@ -108,6 +102,12 @@ export default {
       } else {
         this.activeName = name
       }
+      
+      this.sendMoesifEvent('Watching Video',{
+        course_name: this.$route.params.id.split('_').join(' '),
+        lesson_src: src,
+        lesson_name: name
+      })
     }
   },
   head () {

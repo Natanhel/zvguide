@@ -116,9 +116,9 @@ export default {
   methods: {
     changeFilterFunction(func){
       this.filterFunc = func
-      // this.sendMoesifEvent('Used Filter', {
-      //   filtered: func
-      // })
+      this.sendMoesifEvent('Used Filter', {
+        filtered: func
+      })
     },
     createFilterFunctions(){
       this.filters = this.filters.map(fName => {

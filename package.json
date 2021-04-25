@@ -16,8 +16,12 @@
     "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "eventsource-polyfill": "^0.9.6",
+    "fs": "0.0.1-security",
     "moesif-browser-js": "^1.8.5",
+    "moesif-nodejs": "^3.1.5",
+    "net": "^1.0.2",
     "nuxt": "^2.15.4",
+    "tls": "0.0.1",
     "vue-app": "^0.1.1",
     "vue-loader": "^15.9.6",
     "webpack-hot-middleware": "^2.25.0"
