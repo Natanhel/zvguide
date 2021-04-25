@@ -42,7 +42,7 @@
     </div>
     
     <div v-if="!welcomeCard" class="filter-containr">
-      <div class="filter-button" v-for="f in filters" :key="f.filterText" @click="changeFilterFunction(f.function, f.filterText)">{{f.text}}</div>
+      <div class="filter-button" v-for="f in filters" :key="f.text" @click="changeFilterFunction(f.function, f.text)">{{f.text}}</div>
     </div>
     <courses-list v-if="!welcomeCard" :items="courses"/>
   </v-layout>
