@@ -186,6 +186,7 @@ export default {
   justify-content: space-around;
   align-items: center;
   padding: 1rem;
+  flex-wrap: wrap;
 }
 
 .filter-button {

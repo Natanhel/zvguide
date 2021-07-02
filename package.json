@@ -12,24 +12,24 @@
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore ."
   },
   "dependencies": {
-    "@nuxt/vue-app": "^2.15.4",
+    "@nuxt/vue-app": "^2.15.7",
     "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "eventsource-polyfill": "^0.9.6",
     "fs": "0.0.1-security",
-    "moesif-browser-js": "^1.8.5",
-    "moesif-nodejs": "^3.1.5",
+    "moesif-browser-js": "^1.8.6",
+    "moesif-nodejs": "^3.1.6",
     "net": "^1.0.2",
-    "nuxt": "^2.15.4",
+    "nuxt": "^2.15.7",
     "tls": "0.0.1",
     "vue-app": "^0.1.1",
-    "vue-loader": "^15.9.6",
+    "vue-loader": "^15.9.7",
     "webpack-hot-middleware": "^2.25.0"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^2.0.2",
     "@nuxtjs/eslint-module": "^1.2.0",
-    "@nuxtjs/vuetify": "^1.11.3",
+    "@nuxtjs/vuetify": "^1.12.1",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.15.0",
@@ -37,7 +37,7 @@
     "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-vue": "^6.2.2",
-    "prettier": "^2.2.1",
+    "prettier": "^2.3.2",
     "vue-style-loader": "^4.1.3"
   }
 }
