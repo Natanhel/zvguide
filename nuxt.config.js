@@ -1,6 +1,7 @@
 import colors from "vuetify/es5/util/colors";
 
 export default {  
+  ssr: false,
   env: {
     HASHED_PASS: '$2a$10$DXUgf/bl8dHgCfeEEPhOD.E/CDz/5OwXxQ114X5LViNj6obb2jIEC',
     moesifAppId: 'eyJhcHAiOiIzNjU6MzExIiwidmVyIjoiMi4wIiwib3JnIjoiNjkwOjIyNSIsImlhdCI6MTYxNzIzNTIwMH0.ku2lUPP_FbklfjvoCXkBcunU7b43UAYtMDInmzt5jzk'
